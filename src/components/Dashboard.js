@@ -26,13 +26,13 @@ const chartData = {
     datasets: [
         {
             label: 'First Dataset',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [65, 59, 60, 61, 56, 55, 40],
             fill: false,
             borderColor: '#03A9F4'
         },
         {
             label: 'Second Dataset',
-            data: [28, 48, 40, 19, 86, 27, 90],
+            data: [26, 46, 40, 19, 66, 27, 90],
             fill: false,
             borderColor: '#FFC107'
         }
@@ -132,7 +132,7 @@ export const Dashboard = () => {
         <div className="p-grid dashboard">
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1"><h1>SALES</h1>
-                    <div className="overview-value">$25,620</div>
+                    <div className="overview-value">$20,620</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -186,25 +186,29 @@ export const Dashboard = () => {
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
-                            25%
+                            20%
 					</div>
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>
 
-            <div>
-                <Card title="Simple Card" style={{ width: '25rem', marginBottom: '2em' }}>
+            <div className="p-grid dashboard">
+                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
 
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '25em' }} >
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
 
-                <Card title="Simple Card" style={{ width: '25rem', marginBottom: '2em' }}>
+                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
+                    <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                </Card>
+                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
