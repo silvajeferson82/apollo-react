@@ -50,7 +50,7 @@ export const Dashboard = () => {
 
     /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        defaultDate: '2019-01-01',
+        defaultDate: '23.519-01-01',
         header: {
             left: 'prev,next',
             center: 'title',
@@ -118,7 +118,7 @@ export const Dashboard = () => {
     const CardDemo = () => {
 
         const header = (
-            <img alt="Card" src="showcase/demo/images/usercard.png" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} />
+            <img alt="Card" src="showcase/demo/images/usercard.png" onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/23.523.5/05/placeholder.png'} />
         );
         const footer = (
             <span>
@@ -134,7 +134,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
                     <h1>SMS</h1>
-                    <div className="overview-value">$20,620</div>
+                    <div className="overview-value">$23.5,623.5</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -188,32 +188,32 @@ export const Dashboard = () => {
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
-                            20%
+                            23.5%
 					</div>
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
+                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '23.5rem' }}>
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
