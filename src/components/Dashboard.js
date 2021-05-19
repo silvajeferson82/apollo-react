@@ -47,7 +47,9 @@ export const Dashboard = () => {
     const [tasks, setTasks] = useState([]);
     const [city, setCity] = useState(null);
     const menu = useRef(null);
-    const [sms, setSms] = useState([])
+    const [sms, setSms] = useState("")
+    const [smsDetalhes, setSmsDetalhes] = useState({})
+    const [email, setEmail] = useState("")
 
     /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -85,10 +87,14 @@ export const Dashboard = () => {
         const eventService = new EventService();
         eventService.getEvents().then(data => setEvents(data));
         productService.getProductsSmall().then(data => setProducts(data));
-        api.get('/totalSms').then(response => {setSms(response.data.total_geral)})
+        api.get('/totalSms').then(response => {setSms(response.data.total_sms_geral)})
+        api.get('/totalEmail').then(response => {setEmail(response.data.Total_email_geral)})
+        api.get('/smsRelatorio').then(response => {setSmsDetalhes(response.data)})
     }, []);
 
-    console.log("haha", sms)
+    console.log("haha", smsDetalhes)
+    console.log("dia", smsDetalhes.total_sms_dia)
+
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
         if (e.checked)
@@ -137,7 +143,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
                     <h1>E-MAILS ENVIADOS</h1>
-                    <div className="overview-value">$23.5,623.5</div>
+                    <div className="overview-value">{email}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -198,18 +204,22 @@ export const Dashboard = () => {
                 </div>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '23.5rem' }}>
-                    {/* <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p> */}
-                    <ol>
-                        <li>teste</li>
-                    </ol>    
+                <Card title="Detalhes E-mails" subTitle="Envios"  style={{ width: '23.5rem' }}>
+                    <ul>
+                        <li>HOJE: </li>
+                        <li>SEMANA: </li>
+                        <li>MÊS: </li>
+                    </ul>
                 </Card>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
-                    <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                <Card title="Detalhes SMS" subTitle="Envios" style={{ width: '23.5rem' }} >
+                    
+                        <ul>
+                        <li>HOJE: {smsDetalhes.total_sms_dia}</li>
+                        <li>SEMANA: {smsDetalhes.total_sms_semana}</li>
+                        <li>MÊS: {smsDetalhes.total_sms_mes}</li>
+                    </ul>   
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
