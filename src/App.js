@@ -385,16 +385,16 @@ const App = () => {
 
             <AppTopbar
                 topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
-                onMenuButtonClick={onMenuButtonClick}
-                onTopbarMenuButtonClick={onTopbarMenuButtonClick}
-                onTopbarItemClick={onTopbarItemClick} />
+                /* onMenuButtonClick={onMenuButtonClick} */
+                /* onTopbarMenuButtonClick={onTopbarMenuButtonClick} */
+                /* onTopbarItemClick={onTopbarItemClick} */ />
 
-            <div className={menuContainerClassName} onClick={onMenuClick}>
+            <div className={menuContainerClassName} /* onClick={onMenuClick} */>
                 <div className="layout-menu-content">
-                    <AppMenu model={menu} onMenuItemClick={onMenuItemClick}
+                    {/* <AppMenu model={menu} onMenuItemClick={onMenuItemClick}
                         onRootMenuItemClick={onRootMenuItemClick}
-                        layoutMode={layoutMode} active={menuActive} />
-                    <div className="layout-menu-footer">
+                        layoutMode={layoutMode} active={menuActive} /> */}
+                    {/* <div className="layout-menu-footer">
                         <div className="layout-menu-footer-title">TASKS</div>
 
                         <div className="layout-menu-footer-content">
@@ -403,16 +403,16 @@ const App = () => {
                             <ProgressBar value={80} showValue={false}></ProgressBar>
                             Overall
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
             <div className="layout-content">
                 <AppBreadcrumb />
-
+                
                 <div className="layout-content-container">
                     <Route path="/" exact component={Dashboard} />
-                    <Route path="/documentation" component={Documentation} />
+                    {/* <Route path="/documentation" component={Documentation} />
                     <Route path="/formlayout" component={FormLayoutDemo} />
                     <Route path="/floatlabel" component={FloatLabelDemo} />
                     <Route path="/invalidstate" component={InvalidStateDemo} />
@@ -443,7 +443,7 @@ const App = () => {
                     <Route path="/invoice" component={Invoice} />
                     <Route path="/empty" component={EmptyPage} />
                     <Route path="/widgets" component={Widgets} />
-                    <Route path="/media" component={MediaDemo} />
+                    <Route path="/media" component={MediaDemo} /> */}
                 </div>
 
                 <AppFooter />
