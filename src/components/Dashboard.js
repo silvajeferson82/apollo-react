@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import api from '../service/api'
 import { Panel } from 'primereact/panel';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
@@ -47,6 +47,7 @@ export const Dashboard = () => {
     const [tasks, setTasks] = useState([]);
     const [city, setCity] = useState(null);
     const menu = useRef(null);
+    const [sms, setSms] = useState([])
 
     /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -84,8 +85,10 @@ export const Dashboard = () => {
         const eventService = new EventService();
         eventService.getEvents().then(data => setEvents(data));
         productService.getProductsSmall().then(data => setProducts(data));
+        api.get('/totalSms').then(response => {setSms(response.data.total_geral)})
     }, []);
 
+    console.log("haha", sms)
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
         if (e.checked)
@@ -133,7 +136,7 @@ export const Dashboard = () => {
         <div className="p-grid dashboard">
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
-                    <h1>SMS</h1>
+                    <h1>E-MAILS ENVIADOS</h1>
                     <div className="overview-value">$23.5,623.5</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -149,8 +152,8 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
-                    <h1>EMAILS</h1>
-                    <div className="overview-value">9521</div>
+                    <h1>SMS ENVIADOS</h1>
+                    <div className="overview-value">{sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
