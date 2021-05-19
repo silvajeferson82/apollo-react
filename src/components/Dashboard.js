@@ -191,9 +191,8 @@ export const Dashboard = () => {
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
-            </div>
-
-            <div className="p-grid dashboard">
+            </div>  
+            <div className="p-d-flex p-jc-between">
                 <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
@@ -212,7 +211,7 @@ export const Dashboard = () => {
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
-            </div>         
+            </div>       
         </div>
         
 

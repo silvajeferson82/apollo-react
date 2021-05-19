@@ -20,12 +20,10 @@ const AppTopbar = (props) => {
         <div className="topbar clearfix">
 
             <div className="logo-link">
-                <img className="logo" alt="apollo-layout" src="assets/layout/images/apollo_logo.png" />
+                <img className="logo" alt="Direto-logo" src="assets/layout/images/logo_branca.png" />
             </div>
-
-            <button type="button" className="p-link menu-button" id="menu-button" onClick={props.onMenuButtonClick}>
-                <i className="pi pi-align-left"></i>
-            </button>
+            
+            
 
             <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
                 <span className="username">Sarah Miller</span>
