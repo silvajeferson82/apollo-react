@@ -367,10 +367,10 @@ const App = () => {
         }
     }
 
-    const layoutClassName = classNames('layout-wrapper', {
+    const layoutClassName = classNames('layout-wrapper',{
         'layout-horizontal': layoutMode === 'horizontal',
         'layout-overlay': layoutMode === 'overlay',
-        'layout-static': layoutMode === 'static',
+        //'layout-static': layoutMode === 'static',
         'layout-slim': layoutMode === 'slim',
         'layout-static-inactive': staticMenuDesktopInactive && layoutMode !== 'slim',
         'layout-mobile-active': staticMenuMobileActive,
@@ -389,23 +389,6 @@ const App = () => {
                 /* onTopbarMenuButtonClick={onTopbarMenuButtonClick} */
                 /* onTopbarItemClick={onTopbarItemClick} */ />
 
-            <div className={menuContainerClassName} /* onClick={onMenuClick} */>
-                <div className="layout-menu-content">
-                    {/* <AppMenu model={menu} onMenuItemClick={onMenuItemClick}
-                        onRootMenuItemClick={onRootMenuItemClick}
-                        layoutMode={layoutMode} active={menuActive} /> */}
-                    {/* <div className="layout-menu-footer">
-                        <div className="layout-menu-footer-title">TASKS</div>
-
-                        <div className="layout-menu-footer-content">
-                            <ProgressBar value={50} showValue={false}></ProgressBar>
-                                Today
-                            <ProgressBar value={80} showValue={false}></ProgressBar>
-                            Overall
-                        </div>
-                    </div> */}
-                </div>
-            </div>
 
             <div className="layout-content">
                 <AppBreadcrumb />
@@ -452,11 +435,11 @@ const App = () => {
             </div>
 
 
-            <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
+            <AppConfig /* themeColor={themeColor} onThemeChange={onThemeChange}
                 inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
                 layoutMode={layoutMode} changeMenuMode={changeMenuMode}
                 ripple={ripple} onRippleChange={onRippleChange}
-                scheme={scheme} onSchemeChange={onSchemeChange} />
+                scheme={scheme} onSchemeChange={onSchemeChange} */ />
         </div>
     );
 
