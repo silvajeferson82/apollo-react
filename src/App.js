@@ -386,8 +386,8 @@ const App = () => {
             <AppTopbar
                 topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
                 /* onMenuButtonClick={onMenuButtonClick} */
-                /* onTopbarMenuButtonClick={onTopbarMenuButtonClick} */
-                /* onTopbarItemClick={onTopbarItemClick} */ />
+                onTopbarMenuButtonClick={onTopbarMenuButtonClick}
+                 /* onTopbarItemClick={onTopbarItemClick} */ />
 
 
             <div className="layout-content">

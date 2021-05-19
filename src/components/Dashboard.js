@@ -48,7 +48,7 @@ export const Dashboard = () => {
     const [city, setCity] = useState(null);
     const menu = useRef(null);
 
-    const fullcalendarOptions = {
+    /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
         defaultDate: '2019-01-01',
         header: {
@@ -57,17 +57,17 @@ export const Dashboard = () => {
             right: ''
         },
         editable: true
-    };
+    }; */
 
-    let cities = [
+    /* let cities = [
         { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
         { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
         { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
         { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
         { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
+    ]; */
 
-    let menuItems = [
+    /* let menuItems = [
         {
             label: 'Save', icon: 'pi pi-fw pi-check'
         },
@@ -77,7 +77,7 @@ export const Dashboard = () => {
         {
             label: 'Delete', icon: 'pi pi-fw pi-trash'
         }
-    ];
+    ]; */
 
     useEffect(() => {
         const productService = new ProductService();
@@ -194,26 +194,30 @@ export const Dashboard = () => {
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>  
-            <div className="p-d-flex p-jc-between">
+            <div className="p-col-12 p-md-3">
                 <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
-
+            </div>
+            <div className="p-col-12 p-md-3">
                 <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
-
-                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
+            </div>
+            <div className="p-col-12 p-md-3">
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
-                <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '20rem', margin: '.4em' }}>
+            </div>
+            <div className="p-col-12 p-md-3">
+                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '20rem', margin: '.4em' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
                         quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
                 </Card>
-            </div>       
+            </div>
         </div>
         
 
