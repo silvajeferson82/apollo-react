@@ -199,10 +199,13 @@ export const Dashboard = () => {
             </div>  
             <div className="p-col-12 p-md-3">
                 <Card title="Advanced Card" subTitle="Subtitle"  style={{ width: '23.5rem' }}>
-                    <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                    {/* <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p> */}
+                    <ol>
+                        <li>teste</li>
+                    </ol>    
                 </Card>
-            </div>
+            </div>  
             <div className="p-col-12 p-md-3">
                 <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
                     <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
