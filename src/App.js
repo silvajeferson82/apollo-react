@@ -393,41 +393,10 @@ const App = () => {
             <div className="layout-content">
                 <AppBreadcrumb />
                 
-                <div className="layout-content-container">
-                    <Route path="/" exact component={Dashboard} />
-                    {/* <Route path="/documentation" component={Documentation} />
-                    <Route path="/formlayout" component={FormLayoutDemo} />
-                    <Route path="/floatlabel" component={FloatLabelDemo} />
-                    <Route path="/invalidstate" component={InvalidStateDemo} />
-                    <Route path="/input" component={InputDemo} />
-                    <Route path="/button" component={ButtonDemo} />
-                    <Route path="/table" component={TableDemo} />
-                    <Route path="/list" component={ListDemo} />
-                    <Route path="/tree" component={TreeDemo} />
-                    <Route path="/panel" component={PanelDemo} />
-                    <Route path="/overlay" component={OverlayDemo} />
-                    <Route path="/menu" component={MenuDemo} />
-                    <Route path="/messages" component={MessagesDemo} />
-                    <Route path="/file" component={FileDemo} />
-                    <Route path="/chart" component={ChartDemo} />
-                    <Route path="/misc" component={MiscDemo} />
-                    <Route path="/display" component={DisplayDemo} />
-                    <Route path="/elevation" component={ElevationDemo} />
-                    <Route path="/flexbox" component={FlexBoxDemo} />
-                    <Route path="/icons" component={IconsDemo} />
-                    <Route path="/grid" component={GridDemo} />
-                    <Route path="/spacing" component={SpacingDemo} />
-                    <Route path="/typography" component={TypographyDemo} />
-                    <Route path="/text" component={TextDemo} />
-                    <Route path="/crud" component={CrudDemo} />
-                    <Route path="/timeline" component={TimelineDemo} />
-                    <Route path="/calendar" component={CalendarDemo} />
-                    <Route path="/help" component={Help} />
-                    <Route path="/invoice" component={Invoice} />
-                    <Route path="/empty" component={EmptyPage} />
-                    <Route path="/widgets" component={Widgets} />
-                    <Route path="/media" component={MediaDemo} /> */}
-                </div>
+
+                 <div className="layout-content-container">
+                    <Route path="/home" exact component={Dashboard} />
+                </div> 
 
                 <AppFooter />
 
