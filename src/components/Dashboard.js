@@ -204,7 +204,7 @@ export const Dashboard = () => {
                 </div>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card title="Detalhes E-mails" subTitle="Envios"  style={{ width: '23.5rem' }}>
+                <Card className="overview-box" title="Detalhes E-mails" subTitle="Envios"  /* style={{ width: '23.5rem' }} */>
                     <ul>
                         <li>HOJE: </li>
                         <li>SEMANA: </li>
@@ -213,9 +213,9 @@ export const Dashboard = () => {
                 </Card>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card title="Detalhes SMS" subTitle="Envios" style={{ width: '23.5rem' }} >
+                <Card className="overview-box" title="Detalhes SMS" subTitle="Envios" /* style={{ width: '23.5rem' }} */ >
                     
-                        <ul>
+                    <ul>
                         <li>HOJE: {smsDetalhes.total_sms_dia}</li>
                         <li>SEMANA: {smsDetalhes.total_sms_semana}</li>
                         <li>MÊS: {smsDetalhes.total_sms_mes}</li>
@@ -223,15 +223,21 @@ export const Dashboard = () => {
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
-                    <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                <Card className="overview-box" title="Advanced Card" subTitle="Subtitle" /* style={{ width: '23.5rem' }} */ >
+                    <ul>
+                        <li>HOJE: </li>
+                        <li>SEMANA: </li>
+                        <li>MÊS: </li>
+                    </ul>
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card title="Advanced Card" subTitle="Subtitle" style={{ width: '23.5rem' }} >
-                    <p className="p-m-0" style={{lineHeight: '1.5'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-                        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+                <Card className="overview-box" title="Advanced Card" subTitle="Subtitle" /* style={{ width: '23.5rem' }} */ >
+                    <ul>
+                        <li>HOJE: </li>
+                        <li>SEMANA: </li>
+                        <li>MÊS: </li>
+                    </ul>
                 </Card>
             </div>
         </div>
