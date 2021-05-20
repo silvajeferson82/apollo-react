@@ -142,23 +142,23 @@ export const Dashboard = () => {
         <div className="p-grid dashboard">
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
-                    <h1>E-MAILS ENVIADOS</h1>
+                    <h1 style={{ fontWeight: 'bold'}}>E-MAILS ENVIADOS</h1>
                     <div className="overview-value">{email}</div>
-                    <div className="overview-ratio">
+                    {/* <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
                             51%
-					</div>
-                    </div>
+					    </div>
+                    </div> */}
                     <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
                 </div>
             </div>
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
-                    <h1>SMS ENVIADOS</h1>
+                    <h1 style={{ fontWeight: 'bold'}}>SMS ENVIADOS</h1>
                     <div className="overview-value">{sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -174,7 +174,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-3">
-                    <h1>VALOR NEGOCIADO</h1>
+                    <h1 style={{ fontWeight: 'bold'}}>VALOR NEGOCIADO</h1>
                     <div className="overview-value">452</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -190,7 +190,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
-                    <h1>VALOR RECUPERADO</h1>
+                    <h1 style={{ fontWeight: 'bold'}}>VALOR RECUPERADO</h1>
                     <div className="overview-value">65922</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -204,7 +204,7 @@ export const Dashboard = () => {
                 </div>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card className="overview-box" title="Detalhes E-mails" subTitle="Envios"  /* style={{ width: '23.5rem' }} */>
+                <Card className="overview-box" title="E-mails" subTitle="Envios"  /* style={{ width: '23.5rem' }} */>
                     <ul>
                         <li>HOJE: </li>
                         <li>SEMANA: </li>
@@ -213,7 +213,7 @@ export const Dashboard = () => {
                 </Card>
             </div>  
             <div className="p-col-12 p-md-3">
-                <Card className="overview-box" title="Detalhes SMS" subTitle="Envios" /* style={{ width: '23.5rem' }} */ >
+                <Card className="overview-box" title="SMS" subTitle="Envios" /* style={{ width: '23.5rem' }} */ >
                     
                     <ul>
                         <li>HOJE: {smsDetalhes.total_sms_dia}</li>
@@ -223,7 +223,7 @@ export const Dashboard = () => {
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card className="overview-box" title="Advanced Card" subTitle="Subtitle" /* style={{ width: '23.5rem' }} */ >
+                <Card className="overview-box" title="" subTitle="Envios" /* style={{ width: '23.5rem' }} */ >
                     <ul>
                         <li>HOJE: </li>
                         <li>SEMANA: </li>

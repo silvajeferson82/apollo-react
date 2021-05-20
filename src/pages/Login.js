@@ -36,7 +36,7 @@ export default function Login() {
                 width: '60%',
                 height: '60%',
               }}
-              src="assets/layout/images/LogoPague.png"
+              src="assets/layout/images/logodireto_243.png"
               alt="apollo-layout"
               className="logo"
             />
