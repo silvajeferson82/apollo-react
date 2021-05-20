@@ -1,31 +1,33 @@
-import React, { useEffect } from 'react';
-import { Route, withRouter, useLocation } from 'react-router-dom';
-import App from "./App";
-import { Login } from "./pages/Login";
-import { Error } from "./pages/Error";
-import { NotFound } from "./pages/NotFound";
-import { Access } from "./pages/Access";
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+import App from './App';
+import Login from './pages/Login';
+// import Error from './pages/Error';
+// import NotFound from './pages/NotFound';
+// import Access from './pages/Access';
 
-const AppWrapper = (props) => {
-	let location = useLocation();
+class AppWrapper extends Component {
+  componentDidUpdate(prevProps) {
+    const { location } = this.props;
+    if (location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
 
-	useEffect(() => {
-		window.scrollTo(0, 0)
-	}, [location]);
+  render() {
+    const {
+      location: { pathname },
+    } = this.props;
+    const token = localStorage.getItem('token');
 
-	switch (props.location.pathname) {
-		case "/login":
-			return <Route path="/login" component={Login} />
-		case "/error":
-			return <Route path="/error" component={Error} />
-		case "/notfound":
-			return <Route path="/notfound" component={NotFound} />
-		case "/access":
-			return <Route path="/access" component={Access} />
-		default:
-			return <App />;
-	}
+    const routes = (pathname, token) =>
+      ({
+        '/home': token !== null ? <App /> : <Login />,
+        '/login': <Login />,
+      }[pathname] || <Login />);
 
+    return routes(pathname, token);
+  }
 }
 
 export default withRouter(AppWrapper);
