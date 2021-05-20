@@ -31,10 +31,10 @@ const AppTopbar = (props) => {
                 <i className="pi pi-angle-down"></i>
             </button>
 
-            <span className="topbar-search">
+            {/* <span className="topbar-search">
                 <InputText placeholder="Search" />
                 <span className="pi pi-search"></span>
-            </span>
+            </span> */}
 
 
             <ul className={topbarItemsClassName}>
