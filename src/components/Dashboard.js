@@ -21,6 +21,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
 
+
+
 const chartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
@@ -157,49 +159,49 @@ export const Dashboard = () => {
             </div>
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-2">
+                <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>SMS ENVIADOS</h1>
                     <div className="overview-value">{sms}</div>
-                    <div className="overview-ratio">
+                    {/* <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
                             36%
 					</div>
-                    </div>
+                    </div> */}
                     <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
                 </div>
             </div>
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-3">
+                <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>VALOR NEGOCIADO</h1>
                     <div className="overview-value">452</div>
-                    <div className="overview-ratio">
+                    {/* <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
                             19%
 					</div>
-                    </div>
+                    </div> */}
                     <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
                 </div>
             </div>
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-4">
+                <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>VALOR RECUPERADO</h1>
                     <div className="overview-value">65922</div>
-                    <div className="overview-ratio">
+                    {/* <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
                         </div>
                         <div className="overview-ratio-value">
                             23.5%
-					</div>
-                    </div>
+					    </div>
+                    </div> */}
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>  
