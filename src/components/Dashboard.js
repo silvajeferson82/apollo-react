@@ -35,7 +35,8 @@ export const Dashboard = () => {
     const [sms, setSms] = useState("")
     const [smsDetalhes, setSmsDetalhes] = useState({})
     const [email, setEmail] = useState("")
-
+    const [cpfBase, setCpfBase] = useState("")
+    const [valorNegociado, setValorNegociado] = useState("")
    
 
     useEffect(() => {
@@ -46,10 +47,9 @@ export const Dashboard = () => {
         api.get('/totalSms').then(response => {setSms(response.data.total_sms_geral)})
         api.get('/totalEmail').then(response => {setEmail(response.data.Total_email_geral)})
         api.get('/smsRelatorio').then(response => {setSmsDetalhes(response.data)})
+        api.get('/baseCpf').then(response => {setCpfBase(response.data.Total_base_cpf)})
+        api.get('/valorTotal').then(response => {setValorNegociado(response.data)})
     }, []);
-
-    console.log("haha", smsDetalhes)
-    console.log("dia", smsDetalhes.total_sms_dia)
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -122,8 +122,8 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
-                    <h1 style={{ fontWeight: 'bold'}}>TOTAL VALOR NEGOCIADO</h1>
-                    <div className="overview-value">R$ 452.000,00</div>
+                    <h1 style={{ fontWeight: 'bold'}}>VALOR NEGOCIADO </h1>
+                    <div className="overview-value">R$ {valorNegociado.Total_Geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-dollar"></i>
@@ -135,7 +135,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>CADASTRO NA BASE</h1>
-                    <div className="overview-value">65922</div>
+                    <div className="overview-value">{cpfBase}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-users"></i>
@@ -166,9 +166,10 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <Card className="overview-box" title="VALORES" subTitle="POR CLIENTE" /* style={{ width: '23.5rem' }} */ >
                     <ul>
-                        <li>HOJE: </li>
-                        <li>SEMANA: </li>
-                        <li>MÊS: </li>
+                        <li>Avalyst: R$ {valorNegociado.Total_avalyst}</li>
+                        <li>Visão: R$ {valorNegociado.Total_visao}</li>
+                        <li>Moura Palha: R$ {valorNegociado.Total_mouraPalha}</li>
+                        <li>Outros: R$ {valorNegociado.Total_outros}</li>
                     </ul>
                 </Card>
             </div>
