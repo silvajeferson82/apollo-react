@@ -182,10 +182,47 @@ export const Dashboard = () => {
                 </Card>
             </div>
             {/* Imagens */}
-
-            <div className="p-col-12" style={{border: '1px solid black'}}>
-                <div className="card">
-                    
+            <div>
+                <div /* className="p-col-12" style={{border: '1px solid black'}} */>
+                    <div className="card">
+                        <div className="p-carousel p-component p-carousel-horizontal"> 
+                        <div className="p-carousel-content">
+                            <div className="p-carousel-container">
+                                <div className="p-carousel-items-content" style={{height: "auto"}}>
+                                    <div className="p-carousel-items-container p-items-hidden">
+                                        <div className="p-carousel-item p-carousel-item-active p-carousel-item-start">
+                                            <div className="product-item">
+                                                <div className="product-item-content">
+                                                    <div className="p-mb-3">
+                                                    <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="p-carousel-items p-carousel-item-active">
+                                        <div className="product-items">
+                                            <div className="product-items-content">
+                                            <div className="p-mb-3">
+                                                <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="p-carousel-item p-carousel-item-active p-carousel-item-end">
+                                            <div className="product-item">
+                                                <div className="product-item-content">
+                                                <div className="p-mb-3">
+                                                    <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div> 
+                    </div> 
                 </div>
             </div>
         </div>
