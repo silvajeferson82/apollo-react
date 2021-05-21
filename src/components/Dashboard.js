@@ -199,8 +199,7 @@ export const Dashboard = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="p-carousel-items p-carousel-item-active">
+                                        <div className="p-carousel-items p-carousel-item-active">
                                         <div className="product-items">
                                             <div className="product-items-content">
                                                 <div className="p-mb-3">
@@ -217,7 +216,9 @@ export const Dashboard = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                    </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
