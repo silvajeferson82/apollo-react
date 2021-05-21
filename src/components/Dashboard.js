@@ -196,14 +196,20 @@ export const Dashboard = () => {
                                                     <div className="p-mb-3">
                                                          <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
                                                     </div>
+                                                    <div>
+                                                        <h4 className="p-mb-1">Protesto</h4>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="p-carousel-items p-carousel-item-active">
-                                        <div className="product-items">
-                                            <div className="product-items-content">
+                                        <div className="product-item">
+                                            <div className="product-item-content">
                                                 <div className="p-mb-3">
                                                     <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
+                                                </div>
+                                                <div>
+                                                    <h4 className="p-mb-1">Protesto</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,6 +219,9 @@ export const Dashboard = () => {
                                                 <div className="product-item-content">
                                                     <div className="p-mb-3">
                                                         <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="p-mb-1">Protesto</h4>    
                                                     </div>
                                                 </div>
                                             </div>
