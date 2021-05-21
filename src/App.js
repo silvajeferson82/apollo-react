@@ -403,12 +403,6 @@ const App = () => {
                 {staticMenuMobileActive && <div className="layout-mask"></div>}
             </div>
 
-
-            {/* <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
-                inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
-                layoutMode={layoutMode} changeMenuMode={changeMenuMode}
-                ripple={ripple} onRippleChange={onRippleChange}
-                scheme={scheme} onSchemeChange={onSchemeChange} /> */}
         </div>
     );
 

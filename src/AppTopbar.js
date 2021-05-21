@@ -19,7 +19,7 @@ const AppTopbar = (props) => {
     return (
         <div className="topbar clearfix">
 
-            <div className="logo-link">
+            <div className="logo-link" style={{marginLeft: '10px' }}>
                 <img className="logo" alt="Direto-logo" src="assets/layout/images/logo_branca.png" />
             </div>
             

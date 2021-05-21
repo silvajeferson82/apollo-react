@@ -20,26 +20,9 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
+import { PrimeIcons } from 'primereact/api';
 
 
-
-const chartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'First Dataset',
-            data: [65, 59, 60, 61, 56, 55, 40],
-            fill: false,
-            borderColor: '#03A9F4'
-        },
-        {
-            label: 'Second Dataset',
-            data: [26, 46, 40, 19, 66, 27, 90],
-            fill: false,
-            borderColor: '#FFC107'
-        }
-    ]
-};
 
 export const Dashboard = () => {
 
@@ -53,36 +36,7 @@ export const Dashboard = () => {
     const [smsDetalhes, setSmsDetalhes] = useState({})
     const [email, setEmail] = useState("")
 
-    /* const fullcalendarOptions = {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        defaultDate: '23.519-01-01',
-        header: {
-            left: 'prev,next',
-            center: 'title',
-            right: ''
-        },
-        editable: true
-    }; */
-
-    /* let cities = [
-        { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-        { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-        { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-        { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-        { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ]; */
-
-    /* let menuItems = [
-        {
-            label: 'Save', icon: 'pi pi-fw pi-check'
-        },
-        {
-            label: 'Update', icon: 'pi pi-fw pi-refresh'
-        },
-        {
-            label: 'Delete', icon: 'pi pi-fw pi-trash'
-        }
-    ]; */
+   
 
     useEffect(() => {
         const productService = new ProductService();
@@ -146,15 +100,11 @@ export const Dashboard = () => {
                 <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>E-MAILS ENVIADOS</h1>
                     <div className="overview-value">{email}</div>
-                    {/* <div className="overview-ratio">
+                    <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
-                        </div>
-                        <div className="overview-ratio-value">
-                            51%
-					    </div>
-                    </div> */}
-                    <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
+                            <i className="pi pi-envelope"></i>
+                        </div>  
+                    </div> 
                 </div>
             </div>
 
@@ -162,49 +112,38 @@ export const Dashboard = () => {
                 <div className="overview-box overview-box-1">
                     <h1 style={{ fontWeight: 'bold'}}>SMS ENVIADOS</h1>
                     <div className="overview-value">{sms}</div>
-                    {/* <div className="overview-ratio">
+                    <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
-                        </div>
-                        <div className="overview-ratio-value">
-                            36%
-					</div>
-                    </div> */}
-                    <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
+                            <i className="pi pi-comment"></i>
+                        </div>  
+                    </div> 
                 </div>
             </div>
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
-                    <h1 style={{ fontWeight: 'bold'}}>VALOR NEGOCIADO</h1>
-                    <div className="overview-value">452</div>
-                    {/* <div className="overview-ratio">
+                    <h1 style={{ fontWeight: 'bold'}}>TOTAL VALOR NEGOCIADO</h1>
+                    <div className="overview-value">R$ 452.000,00</div>
+                    <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
-                        </div>
-                        <div className="overview-ratio-value">
-                            19%
-					</div>
-                    </div> */}
-                    <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
+                            <i className="pi pi-dollar"></i>
+                        </div>  
+                    </div>
                 </div>
             </div>
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1">
-                    <h1 style={{ fontWeight: 'bold'}}>VALOR RECUPERADO</h1>
+                    <h1 style={{ fontWeight: 'bold'}}>CADASTRO NA BASE</h1>
                     <div className="overview-value">65922</div>
-                    {/* <div className="overview-ratio">
+                    <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
-                        </div>
-                        <div className="overview-ratio-value">
-                            23.5%
-					    </div>
-                    </div> */}
-                    <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
+                            <i className="pi pi-users"></i>
+                        </div>  
+                    </div>
                 </div>
             </div>  
+
             <div className="p-col-12 p-md-3">
                 <Card className="overview-box" title="E-mails" subTitle="Envios"  /* style={{ width: '23.5rem' }} */>
                     <ul>
@@ -225,7 +164,7 @@ export const Dashboard = () => {
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card className="overview-box" title="" subTitle="Envios" /* style={{ width: '23.5rem' }} */ >
+                <Card className="overview-box" title="VALORES" subTitle="POR CLIENTE" /* style={{ width: '23.5rem' }} */ >
                     <ul>
                         <li>HOJE: </li>
                         <li>SEMANA: </li>
@@ -234,7 +173,7 @@ export const Dashboard = () => {
                 </Card>
             </div>
             <div className="p-col-12 p-md-3">
-                <Card className="overview-box" title="Advanced Card" subTitle="Subtitle" /* style={{ width: '23.5rem' }} */ >
+                <Card className="overview-box" title="CADASTROS" subTitle="Subtitle" /* style={{ width: '23.5rem' }} */ >
                     <ul>
                         <li>HOJE: </li>
                         <li>SEMANA: </li>
@@ -242,7 +181,15 @@ export const Dashboard = () => {
                     </ul>
                 </Card>
             </div>
+            {/* Imagens */}
+
+            <div className="p-col-12" style={{border: '1px solid black'}}>
+                <div className="card">
+                    
+                </div>
+            </div>
         </div>
+        
         
 
     )
