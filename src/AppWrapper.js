@@ -23,7 +23,7 @@ class AppWrapper extends Component {
     const routes = (pathname, token) =>
       ({
         // '/home': token !== null ? <App /> : <Login />,
-          '/home': token === null ? <App /> : <Login />
+          '/home': token === null ? <App /> : <App />
         //'/login': <Login />,
       }[pathname] || <Login />);
 
