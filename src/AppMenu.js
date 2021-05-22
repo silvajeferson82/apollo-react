@@ -135,7 +135,7 @@ const AppSubmenu = (props) => {
 		</li>
 	});
 
-	return items ? <ul role="menu" className={props.className}>{items}</ul> : null;
+	return items ? <ul className={props.className}>{items}</ul> : null;
 
 }
 

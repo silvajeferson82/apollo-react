@@ -389,23 +389,7 @@ const App = () => {
                 onTopbarMenuButtonClick={onTopbarMenuButtonClick}
                 onTopbarItemClick={onTopbarItemClick} />
 
-            <div className={menuContainerClassName} onClick={onMenuClick}>
-                <div className="layout-menu-content">
-                    <AppMenu model={menu} onMenuItemClick={onMenuItemClick}
-                        onRootMenuItemClick={onRootMenuItemClick}
-                        layoutMode={layoutMode} active={menuActive} />
-                    <div className="layout-menu-footer">
-                        <div className="layout-menu-footer-title">TASKS</div>
-
-                        <div className="layout-menu-footer-content">
-                            <ProgressBar value={50} showValue={false}></ProgressBar>
-                                Today
-                            <ProgressBar value={80} showValue={false}></ProgressBar>
-                            Overall
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
 
             <div className="layout-content">
                 <AppBreadcrumb />
