@@ -214,7 +214,7 @@ export const Dashboard = () => {
                 </Panel>
             </div>
 
-            <div className="p-col-12 p-md-6 p-lg-4 task-list">
+            <div className="p-col-12 p-md-6 p-lg-4 task-list" style={{width: "50%"}}>
                 <div>
                     <div className="card">
                         <DataTable value={products}>
