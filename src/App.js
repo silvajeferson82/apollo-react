@@ -396,6 +396,7 @@ const App = () => {
 
                  <div className="layout-content-container">
                     <Route path="/home" exact component={Dashboard} />
+                    <Route path="/chart" component={ChartDemo} />
                 </div> 
 
                 <AppFooter />

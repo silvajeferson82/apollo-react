@@ -51,6 +51,25 @@ export const Dashboard = () => {
         api.get('/valorTotal').then(response => {setValorNegociado(response.data)})
     }, []);
 
+    const chartData = {
+        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+        datasets: [
+            {
+                label: 'First Dataset',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: false,
+                borderColor: '#03A9F4'
+            },
+            {
+                label: 'Second Dataset',
+                data: [28, 48, 40, 19, 86, 27, 90],
+                fill: false,
+                borderColor: '#FFC107'
+            }
+        ]
+    };
+    
+
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
         if (e.checked)
@@ -183,58 +202,10 @@ export const Dashboard = () => {
                 </Card>
             </div>
             {/* Imagens */}
-            <div>
-                <div /* className="p-col-12" style={{border: '1px solid black'}} */>
-                    <div className="card" style={{display:'flex'}}>
-                        <div className="p-carousel p-component p-carousel-horizontal"> 
-                        <div className="p-carousel-content">
-                            <div className="p-carousel-container">
-                                <div className="p-carousel-items-content" style={{height: "auto"}}>
-                                    <div className="p-carousel-items-container p-items-hidden">
-                                        <div className="p-carousel-item p-carousel-item-active p-carousel-item-start">
-                                            <div className="product-item">
-                                                <div className="product-item-content">
-                                                    <div className="p-mb-3">
-                                                         <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="p-mb-1">Protesto</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="p-carousel-items p-carousel-item-active">
-                                        <div className="product-item">
-                                            <div className="product-item-content">
-                                                <div className="p-mb-3">
-                                                    <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
-                                                </div>
-                                                <div>
-                                                    <h4 className="p-mb-1">Protesto</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="p-carousel-item p-carousel-item-active p-carousel-item-end">
-                                            <div className="product-item">
-                                                <div className="product-item-content">
-                                                    <div className="p-mb-3">
-                                                        <img src="assets/demo/images/product/bamboo-watch.jpg" alt="Bamboo Watch" class="product-image"/>
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="p-mb-1">Protesto</h4>    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                     </div> 
-                    </div> 
-                </div>
+            <div className="p-col-12 p-md-6">
+                <Panel header="Core 1 Data">
+                    <Chart type="line" data={chartData} />
+                </Panel>
             </div>
         </div>
         
