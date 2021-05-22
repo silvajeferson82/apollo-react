@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import api from '../service/api'
 import { Panel } from 'primereact/panel';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
@@ -46,6 +46,7 @@ export const Dashboard = () => {
     const [tasks, setTasks] = useState([]);
     const [city, setCity] = useState(null);
     const menu = useRef(null);
+    const [pessoa, setPessoa] = useState({})
 
     const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -82,8 +83,12 @@ export const Dashboard = () => {
         const productService = new ProductService();
         const eventService = new EventService();
         eventService.getEvents().then(data => setEvents(data));
-        productService.getProductsSmall().then(data => setProducts(data));
+        api.get('/baseCpf').then(response => {setPessoa(response.data)
+        console.log(pessoa)})
+        
     }, []);
+
+    console.log(pessoa)
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -118,7 +123,7 @@ export const Dashboard = () => {
         <div className="p-grid dashboard">
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1"><h1>PESSOAS</h1>
-                    <div className="overview-value">$25,620</div>
+                    <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -186,14 +191,14 @@ export const Dashboard = () => {
                             <div className="status-title" style={{ color: '#6ebc3b' }}>Pessoa Física</div>
                             <div className="circle1">
                                 <i className="pi pi-user"></i>
-                                <span>75</span>
+                                <span>{pessoa.Total_cpf}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
                             <div className="status-title" style={{ color: '#f6a821' }}>Pessoa Jurídica</div>
                             <div className="circle2">
                                 <i className="pi pi-mobile"></i>
-                                <span>25</span>
+                                <span>{pessoa.Total_cnpj}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
