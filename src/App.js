@@ -370,7 +370,7 @@ const App = () => {
     const layoutClassName = classNames('layout-wrapper', {
         'layout-horizontal': layoutMode === 'horizontal',
         'layout-overlay': layoutMode === 'overlay',
-        'layout-static': layoutMode === 'static',
+        //'layout-static': layoutMode === 'static',
         'layout-slim': layoutMode === 'slim',
         'layout-static-inactive': staticMenuDesktopInactive && layoutMode !== 'slim',
         'layout-mobile-active': staticMenuMobileActive,
