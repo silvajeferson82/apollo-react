@@ -19,35 +19,37 @@ const AppTopbar = (props) => {
     return (
         <div className="topbar clearfix">
 
-            <div className="logo-link" style={{marginLeft: '10px' }}>
-                <img className="logo" alt="Direto-logo" src="assets/layout/images/logo_branca.png" />
+            <div className="logo-link">
+                <img className="logo" alt="apollo-layout" src="assets/layout/images/apollo_logo.png" />
             </div>
-            
-            
+
+            <button type="button" className="p-link menu-button" id="menu-button" onClick={props.onMenuButtonClick}>
+                <i className="pi pi-align-left"></i>
+            </button>
 
             <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
-                <span className="username">Usuário</span>
-                {/* <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" /> */}
-                <i className="pi pi-user"></i>
+                <span className="username">Sarah Miller</span>
+                <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" />
                 <i className="pi pi-angle-down"></i>
             </button>
 
-           {/*  <span className="topbar-search">
+            <span className="topbar-search">
                 <InputText placeholder="Search" />
                 <span className="pi pi-search"></span>
-            </span>*/}
+            </span>
+
 
             <ul className={topbarItemsClassName}>
                 <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
                     onClick={(e) => onTopbarItemClick(e, 'profile')}>
                     <button type="button" className="p-link">
-                        <i className="topbar-icon pi pi-fw pi-power-off"></i>
-                        <span className="topbar-item-name">Logout</span>
+                        <i className="topbar-icon pi pi-fw pi-user"></i>
+                        <span className="topbar-item-name">Profile</span>
                     </button>
 
                     <CSSTransition classNames="layout-submenu-container" timeout={{ enter: 400, exit: 400 }} in={props.activeTopbarItem === 'profile'} unmountOnExit>
                         <ul>
-                            {/* <li role="menuitem">
+                            <li role="menuitem">
                                 <button type="button" className="p-link">
                                     <i className="pi pi-fw pi-user-edit"></i>
                                     <span>Account</span>
@@ -57,28 +59,25 @@ const AppTopbar = (props) => {
                                 <button type="button" className="p-link">
                                     <i className="pi pi-fw pi-eye"></i>
                                     <span>Privacy</span>
-                                </button>  
+                                </button>
                             </li>
                             <li role="menuitem">
                                 <button type="button" className="p-link">
                                     <i className="pi pi-fw pi-cog"></i>
                                     <span>Settings</span>
                                 </button>
-                            </li> */}
+                            </li>
                             <li role="menuitem">
                                 <button type="button" className="p-link">
                                     <i className="pi pi-fw pi-power-off"></i>
                                     <span>Logout</span>
                                 </button>
                             </li>
-                            <button type="button" className="p-link" title="Logout">
-                                <i className="pi pi-power-off"></i>
-                            </button>
                         </ul>
                     </CSSTransition>
                 </li>
 
-                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'settings' })}
+                <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'settings' })}
                     onClick={(e) => onTopbarItemClick(e, 'settings')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-cog"></i>
@@ -115,8 +114,8 @@ const AppTopbar = (props) => {
                             </li>
                         </ul>
                     </CSSTransition>
-                </li> */}
-                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'messages' })}
+                </li>
+                <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'messages' })}
                     onClick={(e) => onTopbarItemClick(e, 'messages')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-envelope"></i>
@@ -157,8 +156,8 @@ const AppTopbar = (props) => {
                             </li>
                         </ul>
                     </CSSTransition>
-                </li> */}
-                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'notifications' })}
+                </li>
+                <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'notifications' })}
                     onClick={(e) => onTopbarItemClick(e, 'notifications')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-bell"></i>
@@ -194,7 +193,7 @@ const AppTopbar = (props) => {
                             </li>
                         </ul>
                     </CSSTransition>
-                </li> */}
+                </li>
             </ul>
         </div>
     );

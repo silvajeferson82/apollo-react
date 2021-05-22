@@ -367,10 +367,10 @@ const App = () => {
         }
     }
 
-    const layoutClassName = classNames('layout-wrapper',{
+    const layoutClassName = classNames('layout-wrapper', {
         'layout-horizontal': layoutMode === 'horizontal',
         'layout-overlay': layoutMode === 'overlay',
-        //'layout-static': layoutMode === 'static',
+        'layout-static': layoutMode === 'static',
         'layout-slim': layoutMode === 'slim',
         'layout-static-inactive': staticMenuDesktopInactive && layoutMode !== 'slim',
         'layout-mobile-active': staticMenuMobileActive,
@@ -385,25 +385,78 @@ const App = () => {
 
             <AppTopbar
                 topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
-                /* onMenuButtonClick={onMenuButtonClick} */
+                onMenuButtonClick={onMenuButtonClick}
                 onTopbarMenuButtonClick={onTopbarMenuButtonClick}
-                 /* onTopbarItemClick={onTopbarItemClick} */ />
+                onTopbarItemClick={onTopbarItemClick} />
 
+            <div className={menuContainerClassName} onClick={onMenuClick}>
+                <div className="layout-menu-content">
+                    <AppMenu model={menu} onMenuItemClick={onMenuItemClick}
+                        onRootMenuItemClick={onRootMenuItemClick}
+                        layoutMode={layoutMode} active={menuActive} />
+                    <div className="layout-menu-footer">
+                        <div className="layout-menu-footer-title">TASKS</div>
+
+                        <div className="layout-menu-footer-content">
+                            <ProgressBar value={50} showValue={false}></ProgressBar>
+                                Today
+                            <ProgressBar value={80} showValue={false}></ProgressBar>
+                            Overall
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div className="layout-content">
                 <AppBreadcrumb />
-                
 
-                 <div className="layout-content-container">
-                    <Route path="/home" exact component={Dashboard} />
+                <div className="layout-content-container">
+                    <Route path="/" exact component={Dashboard} />
+                    <Route path="/documentation" component={Documentation} />
+                    <Route path="/formlayout" component={FormLayoutDemo} />
+                    <Route path="/floatlabel" component={FloatLabelDemo} />
+                    <Route path="/invalidstate" component={InvalidStateDemo} />
+                    <Route path="/input" component={InputDemo} />
+                    <Route path="/button" component={ButtonDemo} />
+                    <Route path="/table" component={TableDemo} />
+                    <Route path="/list" component={ListDemo} />
+                    <Route path="/tree" component={TreeDemo} />
+                    <Route path="/panel" component={PanelDemo} />
+                    <Route path="/overlay" component={OverlayDemo} />
+                    <Route path="/menu" component={MenuDemo} />
+                    <Route path="/messages" component={MessagesDemo} />
+                    <Route path="/file" component={FileDemo} />
                     <Route path="/chart" component={ChartDemo} />
-                </div> 
+                    <Route path="/misc" component={MiscDemo} />
+                    <Route path="/display" component={DisplayDemo} />
+                    <Route path="/elevation" component={ElevationDemo} />
+                    <Route path="/flexbox" component={FlexBoxDemo} />
+                    <Route path="/icons" component={IconsDemo} />
+                    <Route path="/grid" component={GridDemo} />
+                    <Route path="/spacing" component={SpacingDemo} />
+                    <Route path="/typography" component={TypographyDemo} />
+                    <Route path="/text" component={TextDemo} />
+                    <Route path="/crud" component={CrudDemo} />
+                    <Route path="/timeline" component={TimelineDemo} />
+                    <Route path="/calendar" component={CalendarDemo} />
+                    <Route path="/help" component={Help} />
+                    <Route path="/invoice" component={Invoice} />
+                    <Route path="/empty" component={EmptyPage} />
+                    <Route path="/widgets" component={Widgets} />
+                    <Route path="/media" component={MediaDemo} />
+                </div>
 
                 <AppFooter />
 
                 {staticMenuMobileActive && <div className="layout-mask"></div>}
             </div>
 
+
+            <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
+                inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
+                layoutMode={layoutMode} changeMenuMode={changeMenuMode}
+                ripple={ripple} onRippleChange={onRippleChange}
+                scheme={scheme} onSchemeChange={onSchemeChange} />
         </div>
     );
 
