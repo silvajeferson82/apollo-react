@@ -68,7 +68,7 @@ const App = () => {
     let menuClick;
     let topbarItemClick;
 
-    const menu = [
+    /* const menu = [
         {
             label: 'Favorites', icon: 'pi pi-fw pi-home',
             items: [
@@ -182,7 +182,7 @@ const App = () => {
                 }
             ]
         }
-    ];
+    ]; */
 
     const onInputStyleChange = (inputStyle) => {
         setInputStyle(inputStyle);
@@ -396,7 +396,7 @@ const App = () => {
 
                 <div className="layout-content-container">
                     <Route path="/" exact component={Dashboard} />
-                    <Route path="/documentation" component={Documentation} />
+                    {/* <Route path="/documentation" component={Documentation} />
                     <Route path="/formlayout" component={FormLayoutDemo} />
                     <Route path="/floatlabel" component={FloatLabelDemo} />
                     <Route path="/invalidstate" component={InvalidStateDemo} />
@@ -427,7 +427,7 @@ const App = () => {
                     <Route path="/invoice" component={Invoice} />
                     <Route path="/empty" component={EmptyPage} />
                     <Route path="/widgets" component={Widgets} />
-                    <Route path="/media" component={MediaDemo} />
+                    <Route path="/media" component={MediaDemo} /> */}
                 </div>
 
                 <AppFooter />
