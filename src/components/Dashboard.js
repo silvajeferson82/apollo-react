@@ -47,6 +47,9 @@ export const Dashboard = () => {
     const [city, setCity] = useState(null);
     const menu = useRef(null);
     const [pessoa, setPessoa] = useState({})
+    const [teste, setTeste] = useState([{"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+    {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
+    {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},])
 
     const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -222,8 +225,8 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-6 p-lg-4 task-list" style={{width: "50%"}}>
                 <div>
                     <div className="card">
-                        <DataTable value={products}>
-                            <Column field="code" header="Provider"></Column>
+                        <DataTable value={teste}>
+                            <Column field="id" header="Provider"></Column>
                             <Column style={{textAlign: "right"}} field="name" header="Valor Negociado"></Column>
                         </DataTable>
                     </div>
@@ -236,7 +239,7 @@ export const Dashboard = () => {
             
             
             <div className="p-col-12 p-md-6">
-                <Panel header="Core 1 Data">
+                <Panel header="Gráfico">
                     <Chart type="line" data={chartData} />
                 </Panel>
             </div>
