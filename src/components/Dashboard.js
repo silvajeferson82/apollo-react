@@ -47,6 +47,10 @@ export const Dashboard = () => {
     const [city, setCity] = useState(null);
     const menu = useRef(null);
     const [pessoa, setPessoa] = useState({})
+    const [valorNegociado, setValorNegociado] = useState({})
+    const [sms, setSms] = useState ({})
+    const [email, setEmail] = useState ({})
+    const [valorProviders, setValoresProviders] = useState ([{}])
     const [teste, setTeste] = useState([{"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
     {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
     {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},])
@@ -86,12 +90,15 @@ export const Dashboard = () => {
         const productService = new ProductService();
         const eventService = new EventService();
         eventService.getEvents().then(data => setEvents(data));
-        api.get('/baseCpf').then(response => {setPessoa(response.data)
-        console.log(pessoa)})
+        api.get('/baseCpf').then(response => setPessoa(response.data))
+        api.get('/valorNegociado').then(response => setValorNegociado(response.data))
+        api.get('/totalSms').then(response => setSms(response.data))
+        api.get('/totalEmail').then(response => setEmail(response.data))
+        api.get('/valoresProviders').then(response => setValoresProviders(response.data))
         
     }, []);
 
-    console.log(pessoa)
+    console.log(valorProviders)
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -142,7 +149,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
                     <h1>VALORES DE TRANSAÇÃO</h1>
-                    <div className="overview-value">9521</div>
+                    <div className="overview-value">{valorNegociado.Total_negociado}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -158,7 +165,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-3">
                     <h1>SMS</h1>
-                    <div className="overview-value">452</div>
+                    <div className="overview-value">{sms.Total_sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -174,7 +181,7 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
                     <h1>E-MAIL</h1>
-                    <div className="overview-value">65922</div>
+                    <div className="overview-value">{email.Total_email_geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-arrow-up"></i>
@@ -215,7 +222,7 @@ export const Dashboard = () => {
                             <div className="status-title" style={{ color: '#d66351' }}>Mensagens Entregues</div>
                             <div className="circle4">
                                 <i className="pi pi-dollar"></i>
-                                <span>75</span>
+                                <span>{sms.Total_entregues}</span>
                             </div>
                         </div>
                     </div>
@@ -225,9 +232,9 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-6 p-lg-4 task-list" style={{width: "50%"}}>
                 <div>
                     <div className="card">
-                        <DataTable value={teste}>
-                            <Column field="id" header="Provider"></Column>
-                            <Column style={{textAlign: "right"}} field="name" header="Valor Negociado"></Column>
+                        <DataTable value={valorProviders}>
+                            <Column field="usuario_nome" header="Provider"></Column>
+                            <Column style={{textAlign: "right"}} field="sum" header="Valor Negociado"></Column>
                         </DataTable>
                     </div>
                 </div>
