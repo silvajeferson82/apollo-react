@@ -20,25 +20,17 @@ import interactionPlugin from '@fullcalendar/interaction';
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
 
-const chartData = {
-    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
-    datasets: [
-        {
-            label: 'Envios SMS/Dia',
-            data: [65, 59, 80, 81, 56],
-            fill: false,
-            borderColor: '#03A9F4'
-        }/* ,
-        {
-            label: 'Second Dataset',
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            borderColor: '#FFC107'
-        } */
-    ]
-};
 
 export const Dashboard = () => {
+
+    useEffect(() => {
+        //api.get('sms').then(resp => {
+        //resp.data.month = []
+        //resp.data.values = []
+        //const a = resp.data.month
+        //const b = resp.data.values
+        // })
+    }, []) 
 
     const [products, setProducts] = useState(null);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -51,7 +43,6 @@ export const Dashboard = () => {
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState ([{}])
-    const [valorSomaProvider, setValorSomaProvider] = useState ()
 
     /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -84,6 +75,11 @@ export const Dashboard = () => {
         }
     ]; */
 
+    const [periodChart, setPeriodChart] = useState('semana');
+    
+    const [coluna, setColuna] = useState(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
+    const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
+
     useEffect(() => {
         const productService = new ProductService();
         const eventService = new EventService();
@@ -115,6 +111,45 @@ export const Dashboard = () => {
     // })
     console.log('SMS',sms)
     //console.log('SMS2',teste)
+
+
+    useEffect(() => {
+        //api.post('totalPerDay', {type: periodChart}).then(resp => {
+            
+        // })
+        if (periodChart ===  'mes'){
+            setColuna(['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez']);
+            setLinhaSms([10,20,30,40,50,60,70,80,10,15,50,20]);
+        }
+        else if (periodChart === 'semana') {
+            setColuna(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
+            setLinhaSms([20,15,34,21,43,12,19]);
+        }
+        
+        console.log(periodChart);
+    }, [periodChart])
+
+
+
+    const chartData = {
+        /* labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'], */
+        labels: coluna,
+        datasets: [
+            {
+                label: 'Relatorio envio SMS ',
+                /* data: [65, 59, 80, 10, 56, 55, 40], */
+                data: linhaSms,
+                fill: false,
+                borderColor: '#03A9F4'
+            }/* ,
+            {
+                label: 'Second Dataset',
+                data: [28, 48, 40, 19, 86, 27, 90],
+                fill: false,
+                borderColor: '#FFC107'
+            } */
+        ]
+    };
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -154,9 +189,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-users"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            51%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
                 </div>
@@ -170,9 +203,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-dollar"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            36%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
                 </div>
@@ -186,9 +217,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-comment"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            19%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
                 </div>
@@ -202,9 +231,6 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-envelope"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            25%
-					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
@@ -257,12 +283,12 @@ export const Dashboard = () => {
             </div>
 
             
-            
-
-            
-            
             <div className="p-col-12 p-md-6">
-                <Panel header="Relatório SMS">
+                <Panel header="Relatório SMS" >
+                <select className="p-panel-title" onChange={(e) => setPeriodChart(e.target.value)}>
+                    <option value="semana">SEMANA</option>
+                    <option value="mes">MÊS</option>
+                </select>
                     <Chart type="line" data={chartData} />
                 </Panel>
             </div>
