@@ -25,7 +25,7 @@ const chartData = {
     datasets: [
         {
             label: 'Envios SMS/Dia',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: [65, 59, 80, 81, 56],
             fill: false,
             borderColor: '#03A9F4'
         }/* ,
@@ -51,9 +51,7 @@ export const Dashboard = () => {
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState ([{}])
-    const [teste, setTeste] = useState([{"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
-    {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
-    {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},])
+    const [valorSomaProvider, setValorSomaProvider] = useState ()
 
     /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -96,9 +94,27 @@ export const Dashboard = () => {
         api.get('/totalEmail').then(response => setEmail(response.data))
         api.get('/valoresProviders').then(response => setValoresProviders(response.data))
         
+        
     }, []);
-
-    console.log(valorProviders)
+    
+    const sum = valorProviders.map((user) => {
+        const allan = {
+            provider: user.usuario_nome,
+            valor_provider: "R$ " + Number(user.sum).toFixed(2)
+        }
+        //return user.sum.toFixed(0)
+        return allan
+    })
+    
+    // const teste = sms(async (allan) => {
+    //     const oi = await {
+    //         provi: allan.Total_entregue
+    //     }
+    //     //return user.sum.toFixed(0)
+    //     return oi
+    // })
+    console.log('SMS',sms)
+    //console.log('SMS2',teste)
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -201,14 +217,14 @@ export const Dashboard = () => {
                             <div className="status-title" style={{ color: '#6ebc3b' }}>Pessoa Física</div>
                             <div className="circle1">
                                 <i className="pi pi-user"></i>
-                                <span>1235{pessoa.Total_cpf}</span>
+                                <span style={{left: '30%'}}>{pessoa.Total_cpf}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
                             <div className="status-title" style={{ color: '#f6a821' }}>Pessoa Jurídica</div>
                             <div className="circle2">
                                 <i className="pi pi-briefcase"></i>
-                                <span>35{pessoa.Total_cnpj}</span>
+                                <span>{pessoa.Total_cnpj}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
@@ -222,7 +238,7 @@ export const Dashboard = () => {
                             <div className="status-title" style={{ color: '#d66351' }}>Mensagens Entregues</div>
                             <div className="circle4">
                                 <i className="pi pi-download"></i>
-                                <span>100{sms.Total_entregues}</span>
+                                <span style={{top: "40%", left: "30%"}}>{Number(sms.Total_entregues).toFixed(0)}</span>
                             </div>
                         </div>
                     </div>
@@ -232,9 +248,9 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-6 p-lg-4 task-list" style={{width: "50%"}}>
                 <div>
                     <div className="card">
-                        <DataTable value={valorProviders}>
-                            <Column field="usuario_nome" header="Provider"></Column>
-                            <Column style={{textAlign: "right"}} field="sum" header="Valor Negociado"></Column>
+                        <DataTable value={sum}>
+                            <Column field="provider" header="Provider"></Column>
+                            <Column style={{textAlign: "right"}} field="valor_provider" header="Valor Negociado"></Column>
                         </DataTable>
                     </div>
                 </div>
