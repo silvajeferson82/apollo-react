@@ -246,7 +246,7 @@ export const Dashboard = () => {
             
             
             <div className="p-col-12 p-md-6">
-                <Panel header="Gráfico">
+                <Panel header="Relatório SMS">
                     <Chart type="line" data={chartData} />
                 </Panel>
             </div>
