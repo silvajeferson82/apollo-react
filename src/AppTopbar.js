@@ -20,7 +20,7 @@ const AppTopbar = (props) => {
         <div className="topbar clearfix">
 
             <div className="logo-link" style={{marginLeft:"0.625rem"}}>
-                <img className="logo" alt="direto-layout" src="assets/layout/images/logodireto_243.png" />
+                <img className="logo" alt="direto-layout" src="assets/layout/images/logo_branca_direto.png" />
             </div>
 
             {/* <button type="button" className="p-link menu-button" id="menu-button" onClick={props.onMenuButtonClick}>

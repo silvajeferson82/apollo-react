@@ -21,20 +21,20 @@ import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
 
 const chartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
     datasets: [
         {
-            label: 'First Dataset',
+            label: 'Envios SMS/Dia',
             data: [65, 59, 80, 81, 56, 55, 40],
             fill: false,
             borderColor: '#03A9F4'
-        },
+        }/* ,
         {
             label: 'Second Dataset',
             data: [28, 48, 40, 19, 86, 27, 90],
             fill: false,
             borderColor: '#FFC107'
-        }
+        } */
     ]
 };
 
@@ -55,7 +55,7 @@ export const Dashboard = () => {
     {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
     {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},])
 
-    const fullcalendarOptions = {
+    /* const fullcalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
         defaultDate: '2019-01-01',
         header: {
@@ -73,8 +73,8 @@ export const Dashboard = () => {
         { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
         { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
     ];
-
-    let menuItems = [
+ */
+    /* let menuItems = [
         {
             label: 'Save', icon: 'pi pi-fw pi-check'
         },
@@ -84,7 +84,7 @@ export const Dashboard = () => {
         {
             label: 'Delete', icon: 'pi pi-fw pi-trash'
         }
-    ];
+    ]; */
 
     useEffect(() => {
         const productService = new ProductService();
@@ -132,15 +132,15 @@ export const Dashboard = () => {
     return (
         <div className="p-grid dashboard">
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-1"><h1>PESSOAS</h1>
+                <div className="overview-box overview-box-1"><h1>CADASTROS NA BASE</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
+                            <i className="pi pi-users"></i>
                         </div>
-                        <div className="overview-ratio-value">
+                        {/* <div className="overview-ratio-value">
                             51%
-					</div>
+					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
                 </div>
@@ -152,11 +152,11 @@ export const Dashboard = () => {
                     <div className="overview-value">{valorNegociado.Total_negociado}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
+                            <i className="pi pi-dollar"></i>
                         </div>
-                        <div className="overview-ratio-value">
+                        {/* <div className="overview-ratio-value">
                             36%
-					</div>
+					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
                 </div>
@@ -164,15 +164,15 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-3">
-                    <h1>SMS</h1>
+                    <h1>SMS ENVIADOS</h1>
                     <div className="overview-value">{sms.Total_sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
+                            <i className="pi pi-comment"></i>
                         </div>
-                        <div className="overview-ratio-value">
+                        {/* <div className="overview-ratio-value">
                             19%
-					</div>
+					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
                 </div>
@@ -180,15 +180,15 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
-                    <h1>E-MAIL</h1>
+                    <h1>E-MAIL'S ENVIADOS</h1>
                     <div className="overview-value">{email.Total_email_geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
-                            <i className="pi pi-arrow-up"></i>
+                            <i className="pi pi-envelope"></i>
                         </div>
-                        <div className="overview-ratio-value">
+                        {/* <div className="overview-ratio-value">
                             25%
-					</div>
+					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
@@ -201,14 +201,14 @@ export const Dashboard = () => {
                             <div className="status-title" style={{ color: '#6ebc3b' }}>Pessoa Física</div>
                             <div className="circle1">
                                 <i className="pi pi-user"></i>
-                                <span>{pessoa.Total_cpf}</span>
+                                <span>1235{pessoa.Total_cpf}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
                             <div className="status-title" style={{ color: '#f6a821' }}>Pessoa Jurídica</div>
                             <div className="circle2">
-                                <i className="pi pi-mobile"></i>
-                                <span>{pessoa.Total_cnpj}</span>
+                                <i className="pi pi-briefcase"></i>
+                                <span>35{pessoa.Total_cnpj}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
@@ -221,8 +221,8 @@ export const Dashboard = () => {
                         <div className="p-col-12 p-lg-3 p-md-6">
                             <div className="status-title" style={{ color: '#d66351' }}>Mensagens Entregues</div>
                             <div className="circle4">
-                                <i className="pi pi-dollar"></i>
-                                <span>{sms.Total_entregues}</span>
+                                <i className="pi pi-download"></i>
+                                <span>100{sms.Total_entregues}</span>
                             </div>
                         </div>
                     </div>
