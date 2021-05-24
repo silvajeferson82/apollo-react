@@ -20,12 +20,18 @@ import interactionPlugin from '@fullcalendar/interaction';
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
 
+const jeferson = [20,15,34,21,43,12,19];
+const jeferson2 = [10,20,30,40,50,60,70,80,10,15,50,20];
+const month = ['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez'];
+
 const chartData = {
-    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'],
+    /* labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'], */
+    labels: month,
     datasets: [
         {
-            label: 'Envios SMS/Dia',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            label: 'Relatorio envio SMS',
+            /* data: [65, 59, 80, 10, 56, 55, 40], */
+            data: jeferson2,
             fill: false,
             borderColor: '#03A9F4'
         }/* ,
@@ -39,6 +45,15 @@ const chartData = {
 };
 
 export const Dashboard = () => {
+
+    useEffect(() => {
+        //api.get('sms').then(resp => {
+        //resp.data.month = []
+        //resp.data.values = []
+        //const a = resp.data.month
+        //const b = resp.data.values
+        // })
+    }, []) 
 
     const [products, setProducts] = useState(null);
     const [selectedProduct, setSelectedProduct] = useState(null);
