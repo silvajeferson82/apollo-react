@@ -20,29 +20,12 @@ import interactionPlugin from '@fullcalendar/interaction';
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
 
-const jeferson = [20,15,34,21,43,12,19];
-const jeferson2 = [10,20,30,40,50,60,70,80,10,15,50,20];
+const smsWeek = [20,15,34,21,43,12,19];
+const smsMonth = [10,20,30,40,50,60,70,80,10,15,50,20];
 const month = ['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez'];
+const week = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'];
 
-const chartData = {
-    /* labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'], */
-    labels: month,
-    datasets: [
-        {
-            label: 'Relatorio envio SMS',
-            /* data: [65, 59, 80, 10, 56, 55, 40], */
-            data: jeferson2,
-            fill: false,
-            borderColor: '#03A9F4'
-        }/* ,
-        {
-            label: 'Second Dataset',
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            borderColor: '#FFC107'
-        } */
-    ]
-};
+
 
 export const Dashboard = () => {
 
@@ -69,37 +52,10 @@ export const Dashboard = () => {
     const [teste, setTeste] = useState([{"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
     {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
     {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},])
-
-    /* const fullcalendarOptions = {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        defaultDate: '2019-01-01',
-        header: {
-            left: 'prev,next',
-            center: 'title',
-            right: ''
-        },
-        editable: true
-    };
-
-    let cities = [
-        { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-        { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-        { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-        { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-        { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
- */
-    /* let menuItems = [
-        {
-            label: 'Save', icon: 'pi pi-fw pi-check'
-        },
-        {
-            label: 'Update', icon: 'pi pi-fw pi-refresh'
-        },
-        {
-            label: 'Delete', icon: 'pi pi-fw pi-trash'
-        }
-    ]; */
+    const [periodChart, setPeriodChart] = useState('semana');
+    
+    const [coluna, setColuna] = useState(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
+    const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
 
     useEffect(() => {
         const productService = new ProductService();
@@ -113,7 +69,39 @@ export const Dashboard = () => {
         
     }, []);
 
+    useEffect(() => {
+        //api.post('totalPerDay', {type: periodChart}).then(resp => {
+            
+        // })
+        if(periodChart ===  'mes'){
+            setColuna(['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez']);
+            setLinhaSms([10,20,30,40,50,60,70,80,10,15,50,20]);
+        }
+        
+        console.log(periodChart);
+    }, [periodChart])
+
     console.log(valorProviders)
+
+    const chartData = {
+        /* labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'], */
+        labels: coluna,
+        datasets: [
+            {
+                label: 'Relatorio envio SMS ',
+                /* data: [65, 59, 80, 10, 56, 55, 40], */
+                data: linhaSms,
+                fill: false,
+                borderColor: '#03A9F4'
+            }/* ,
+            {
+                label: 'Second Dataset',
+                data: [28, 48, 40, 19, 86, 27, 90],
+                fill: false,
+                borderColor: '#FFC107'
+            } */
+        ]
+    };
 
     const onTaskChange = (e) => {
         let selectedTasks = [...tasks];
@@ -153,9 +141,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-users"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            51%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
                 </div>
@@ -169,9 +155,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-dollar"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            36%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
                 </div>
@@ -185,9 +169,7 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-comment"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            19%
-					    </div> */}
+                        
                     </div>
                     <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
                 </div>
@@ -201,9 +183,6 @@ export const Dashboard = () => {
                         <div className="overview-direction">
                             <i className="pi pi-envelope"></i>
                         </div>
-                        {/* <div className="overview-ratio-value">
-                            25%
-					    </div> */}
                     </div>
                     <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
@@ -256,12 +235,12 @@ export const Dashboard = () => {
             </div>
 
             
-            
-
-            
-            
             <div className="p-col-12 p-md-6">
-                <Panel header="Relatório SMS">
+                <Panel header="Relatório SMS" >
+                <select className="p-panel-title" onChange={(e) => setPeriodChart(e.target.value)}>
+                    <option value="semana">SEMANA</option>
+                    <option value="mes">MÊS</option>
+                </select>
                     <Chart type="line" data={chartData} />
                 </Panel>
             </div>
