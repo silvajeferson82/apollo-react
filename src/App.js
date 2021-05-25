@@ -436,11 +436,11 @@ const App = () => {
             </div>
 
 
-            <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
+            {/* <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
                 inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
                 layoutMode={layoutMode} changeMenuMode={changeMenuMode}
                 ripple={ripple} onRippleChange={onRippleChange}
-                scheme={scheme} onSchemeChange={onSchemeChange} />
+                scheme={scheme} onSchemeChange={onSchemeChange} /> */}
         </div>
     );
 

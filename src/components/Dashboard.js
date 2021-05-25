@@ -44,36 +44,6 @@ export const Dashboard = () => {
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState ([{}])
 
-    /* const fullcalendarOptions = {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        defaultDate: '2019-01-01',
-        header: {
-            left: 'prev,next',
-            center: 'title',
-            right: ''
-        },
-        editable: true
-    };
-
-    let cities = [
-        { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-        { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-        { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-        { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-        { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
- */
-    /* let menuItems = [
-        {
-            label: 'Save', icon: 'pi pi-fw pi-check'
-        },
-        {
-            label: 'Update', icon: 'pi pi-fw pi-refresh'
-        },
-        {
-            label: 'Delete', icon: 'pi pi-fw pi-trash'
-        }
-    ]; */
 
     const [periodChart, setPeriodChart] = useState('semana');
     
