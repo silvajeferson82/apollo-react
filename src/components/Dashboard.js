@@ -46,7 +46,6 @@ export const Dashboard = () => {
 
 
     const [periodChart, setPeriodChart] = useState('semana');
-    
     const [coluna, setColuna] = useState(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
     const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
 
@@ -64,25 +63,17 @@ export const Dashboard = () => {
     }, []);
     
     const sum = valorProviders.map((user) => {
-        const allan = {
-            provider: user.usuario_nome,
-            valor_provider: "R$ " + Number(user.sum).toFixed(2)
+        const nomeValor = {
+            provider: user.usuario_nome?.toUpperCase(),
+            valor_provider: new Intl.NumberFormat('pt-BR', 
+            {style: 'currency',currency: 'BRL'})
+            .format(user.sum), 
         }
-        //return user.sum.toFixed(0)
-        return allan
+        return nomeValor
     })
+
+    console.log('Aqui..',)
     
-    // const teste = sms(async (allan) => {
-    //     const oi = await {
-    //         provi: allan.Total_entregue
-    //     }
-    //     //return user.sum.toFixed(0)
-    //     return oi
-    // })
-    console.log('SMS',sms)
-    //console.log('SMS2',teste)
-
-
     useEffect(() => {
         //api.post('totalPerDay', {type: periodChart}).then(resp => {
             
@@ -102,22 +93,14 @@ export const Dashboard = () => {
 
 
     const chartData = {
-        /* labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo'], */
         labels: coluna,
         datasets: [
             {
                 label: 'Relatorio envio SMS ',
-                /* data: [65, 59, 80, 10, 56, 55, 40], */
                 data: linhaSms,
                 fill: false,
                 borderColor: '#03A9F4'
-            }/* ,
-            {
-                label: 'Second Dataset',
-                data: [28, 48, 40, 19, 86, 27, 90],
-                fill: false,
-                borderColor: '#FFC107'
-            } */
+            }
         ]
     };
 
@@ -168,7 +151,11 @@ export const Dashboard = () => {
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
                     <h1>VALORES DE TRANSAÇÃO</h1>
-                    <div className="overview-value">{valorNegociado.Total_negociado}</div>
+                    <div className="overview-value">
+                        {new Intl.NumberFormat('pt-BR', 
+                        {style: 'currency',currency: 'BRL'})
+                        .format(valorNegociado.Total_negociado)}
+                    </div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
                             <i className="pi pi-dollar"></i>
@@ -241,10 +228,13 @@ export const Dashboard = () => {
                 </Panel>
             </div>
 
-            <div className="p-col-12 p-md-6 p-lg-4 task-list" style={{width: "50%"}}>
+            {/**Tabela Provider e valores */}
+            <div className="p-col-12 p-md-6 task-list">
                 <div>
                     <div className="card">
-                        <DataTable value={sum}>
+                        <DataTable
+                         value={sum}
+                         >
                             <Column field="provider" header="Provider"></Column>
                             <Column style={{textAlign: "right"}} field="valor_provider" header="Valor Negociado"></Column>
                         </DataTable>
@@ -252,13 +242,16 @@ export const Dashboard = () => {
                 </div>
             </div>
 
-            
+            {/**Grafico SMS */}
             <div className="p-col-12 p-md-6">
-                <Panel header="Relatório SMS" >
-                <select className="p-panel-title" onChange={(e) => setPeriodChart(e.target.value)}>
-                    <option value="semana">SEMANA</option>
-                    <option value="mes">MÊS</option>
-                </select>
+                <Panel header="Acompanhamento SMS">
+                    <div>
+                        <strong>Período</strong>
+                        <select onChange={(e) => setPeriodChart(e.target.value)}>
+                            <option value="semana">SEMANA</option>
+                            <option value="mes">MÊS</option>
+                        </select>
+                    </div>
                     <Chart type="line" data={chartData} />
                 </Panel>
             </div>
