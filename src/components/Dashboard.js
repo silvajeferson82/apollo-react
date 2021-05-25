@@ -1,21 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import api from '../service/api'
 import { Panel } from 'primereact/panel';
-import { Checkbox } from 'primereact/checkbox';
-import { Button } from 'primereact/button';
-import { Dropdown } from 'primereact/dropdown';
-import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
 import { Chart } from 'primereact/chart';
-import { ProgressBar } from 'primereact/progressbar';
-import { Menu } from 'primereact/menu';
-import { FullCalendar } from 'primereact/fullcalendar';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
 
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
@@ -31,13 +19,8 @@ export const Dashboard = () => {
         //const b = resp.data.values
         // })
     }, []) 
-
-    const [products, setProducts] = useState(null);
-    const [selectedProduct, setSelectedProduct] = useState(null);
+   
     const [events, setEvents] = useState(null);
-    const [tasks, setTasks] = useState([]);
-    const [city, setCity] = useState(null);
-    const menu = useRef(null);
     const [pessoa, setPessoa] = useState({})
     const [valorNegociado, setValorNegociado] = useState({})
     const [sms, setSms] = useState ({})
@@ -50,16 +33,20 @@ export const Dashboard = () => {
     const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
 
     useEffect(() => {
-        const productService = new ProductService();
-        const eventService = new EventService();
-        eventService.getEvents().then(data => setEvents(data));
-        api.get('/baseCpf').then(response => setPessoa(response.data))
-        api.get('/valorNegociado').then(response => setValorNegociado(response.data))
-        api.get('/totalSms').then(response => setSms(response.data))
-        api.get('/totalEmail').then(response => setEmail(response.data))
-        api.get('/valoresProviders').then(response => setValoresProviders(response.data))
-        
-        
+        async function getItems(){
+            try {
+                const eventService = new EventService();
+                eventService.getEvents().then(data => setEvents(data));
+                await api.get('/baseCpf').then(response => setPessoa(response.data))
+                await api.get('/valorNegociado').then(response => setValorNegociado(response.data))
+                await api.get('/totalSms').then(response => setSms(response.data))
+                await api.get('/totalEmail').then(response => setEmail(response.data))
+                await api.get('/valoresProviders').then(response => setValoresProviders(response.data))
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getItems()
     }, []);
     
     const sum = valorProviders.map((user) => {
@@ -72,7 +59,7 @@ export const Dashboard = () => {
         return nomeValor
     })
 
-    console.log('Aqui..',)
+    console.log('Aqui..')
     
     useEffect(() => {
         //api.post('totalPerDay', {type: periodChart}).then(resp => {
@@ -90,8 +77,6 @@ export const Dashboard = () => {
         console.log(periodChart);
     }, [periodChart])
 
-
-
     const chartData = {
         labels: coluna,
         datasets: [
@@ -102,35 +87,6 @@ export const Dashboard = () => {
                 borderColor: '#03A9F4'
             }
         ]
-    };
-
-    const onTaskChange = (e) => {
-        let selectedTasks = [...tasks];
-        if (e.checked)
-            selectedTasks.push(e.value);
-        else
-            selectedTasks.splice(selectedTasks.indexOf(e.value), 1);
-        setTasks(selectedTasks);
-    };
-
-    const onCityChange = (e) => {
-        setCity(e.value);
-    };
-
-    const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    };
-
-    const logoTemplate = (rowData, column) => {
-        var src = "assets/demo/images/product/" + rowData.image;
-        return <img src={src} alt={rowData.brand} width="50px" />;
-    };
-
-    const actionTemplate = (rowData, column) => {
-        return <div className="p-grid">
-            <Button icon="pi pi-search" type="button" className="p-button-success p-mr-2 p-mb-1"></Button>
-            <Button icon="pi pi-times" type="button" className="p-button-danger p-mb-1"></Button>
-        </div>
     };
 
     return (
