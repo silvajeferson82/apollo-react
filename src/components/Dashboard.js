@@ -5,10 +5,6 @@ import { Chart } from 'primereact/chart';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
-import ProductService from '../service/ProductService';
-import EventService from '../service/EventService';
-
-
 export const Dashboard = () => {
 
     useEffect(() => {
@@ -35,8 +31,6 @@ export const Dashboard = () => {
     useEffect(() => {
         async function getItems(){
             try {
-                const eventService = new EventService();
-                eventService.getEvents().then(data => setEvents(data));
                 await api.get('/baseCpf').then(response => setPessoa(response.data))
                 await api.get('/valorNegociado').then(response => setValorNegociado(response.data))
                 await api.get('/totalSms').then(response => setSms(response.data))

@@ -27,11 +27,11 @@ const AppTopbar = (props) => {
                 <i className="pi pi-align-left"></i>
             </button> */}
 
-            <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
+            {/* <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
                 <span className="username">Usuário</span>
                 <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" />
                 <i className="pi pi-angle-down"></i>
-            </button>
+            </button> */}
 
             {/* <span className="topbar-search">
                 <InputText placeholder="Search" />
@@ -40,7 +40,7 @@ const AppTopbar = (props) => {
 
 
             <ul className={topbarItemsClassName}>
-                <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
+                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
                     onClick={(e) => onTopbarItemClick(e, 'profile')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-power-off"></i>
@@ -192,8 +192,8 @@ const AppTopbar = (props) => {
                                 </button>
                             </li>
                         </ul>
-                    </CSSTransition> */}
-                </li>
+                    </CSSTransition> }
+                </li> */}
             </ul>
         </div>
     );
