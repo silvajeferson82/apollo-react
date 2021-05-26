@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import api from '../service/api'
-import { Panel } from 'primereact/panel';
-import { Chart } from 'primereact/chart';
+import React, { useState, useEffect, useRe } from 'react';
+import api from '../service/api';
+import { Panel } from 'primereact/panel'
+import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import { Column } from 'primereact/column'
+import {format, parseISO} from 'date-fns';
 
 export const Dashboard = () => {
 
@@ -21,10 +22,11 @@ export const Dashboard = () => {
     const [valorNegociado, setValorNegociado] = useState({})
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
-    const [valorProviders, setValoresProviders] = useState ([{}])
+    const [valorProviders, setValoresProviders] = useState([{}])
+    const [teste, setTeste] = useState([{}])
 
 
-    const [periodChart, setPeriodChart] = useState('semana');
+    const [periodChart, setPeriodChart] = useState(7);
     const [coluna, setColuna] = useState(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
     const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
 
@@ -43,6 +45,9 @@ export const Dashboard = () => {
         getItems()
     }, []);
     
+    console.log('taia', teste)
+    console.log('willys',typeof(periodChart))
+
     const sum = valorProviders.map((user) => {
         const nomeValor = {
             provider: user.usuario_nome?.toUpperCase(),
@@ -52,24 +57,34 @@ export const Dashboard = () => {
         }
         return nomeValor
     })
-
-    console.log('Aqui..')
     
     useEffect(() => {
         //api.post('totalPerDay', {type: periodChart}).then(resp => {
             
         // })
-        if (periodChart ===  'mes'){
+        api.get(`smsPeriodo/${periodChart}`).then(response => setTeste(response.data))
+        if (periodChart ===  '30'){
             setColuna(['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez']);
             setLinhaSms([10,20,30,40,50,60,70,80,10,15,50,20]);
         }
-        else if (periodChart === 'semana') {
-            setColuna(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
+        else if (periodChart === '7') {
+            setColuna();
             setLinhaSms([20,15,34,21,43,12,19]);
         }
         
         console.log(periodChart);
     }, [periodChart])
+
+
+    const grafico = teste.map((user) => {
+        const name = {
+            teste1: user.date ? format(parseISO(user.date),'dd/MM') : '2021-01-01' ,
+            teste2: user.qtd 
+        }
+        return name
+    })
+
+    console.log('aaaaaa',grafico)
 
     const chartData = {
         labels: coluna,
@@ -198,8 +213,8 @@ export const Dashboard = () => {
                     <div>
                         <strong>Período</strong>
                         <select onChange={(e) => setPeriodChart(e.target.value)}>
-                            <option value="semana">SEMANA</option>
-                            <option value="mes">MÊS</option>
+                            <option value="7">SEMANA</option>
+                            <option value="30">MÊS</option>
                         </select>
                     </div>
                     <Chart type="line" data={chartData} />
