@@ -45,7 +45,6 @@ export const Dashboard = () => {
         getItems()
     }, []);
     
-    console.log('taia', teste)
     console.log('willys', periodChart)
     
 
@@ -71,11 +70,13 @@ export const Dashboard = () => {
             }
             
 
-            if (periodChart ===  '30'){
+            if (periodChart ===  '7'){
                 setColuna(date.reverse());
                 setLinhaSms(qtd.reverse());
+                console.log("aaaaaaaaaaaaaaaaaaaaa")
+                console.log('sacotex', teste)
             }
-            else if (periodChart === '7') {
+            else if (periodChart === '30') {
                 setColuna(date.reverse());
                 setLinhaSms(qtd.reverse());
                 console.log('entrou aqui')
@@ -83,7 +84,7 @@ export const Dashboard = () => {
     
         }
         getGraph()
-        console.log(periodChart);
+        console.log("valor",periodChart);
     }, [periodChart])
 
 
@@ -97,7 +98,6 @@ export const Dashboard = () => {
     const qtd = teste.map((user) => {
         const name = [
             user.qtd
-            //teste2: user.qtd 
         ]
         return name
     })
