@@ -4,7 +4,7 @@ import { Panel } from 'primereact/panel'
 import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
-import {format, parseISO} from 'date-fns';
+import {format, parseISO, set} from 'date-fns';
 
 export const Dashboard = () => {
 
@@ -26,9 +26,9 @@ export const Dashboard = () => {
     const [teste, setTeste] = useState([{}])
 
 
-    const [periodChart, setPeriodChart] = useState(7);
-    const [coluna, setColuna] = useState(['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado', 'Domingo']);
-    const [linhaSms, setLinhaSms] = useState([20,15,34,21,43,12,19]);
+    const [periodChart, setPeriodChart] = useState("7");
+    const [coluna, setColuna] = useState([]);
+    const [linhaSms, setLinhaSms] = useState([]);
 
     useEffect(() => {
         async function getItems(){
@@ -46,7 +46,8 @@ export const Dashboard = () => {
     }, []);
     
     console.log('taia', teste)
-    console.log('willys',typeof(periodChart))
+    console.log('willys', periodChart)
+    
 
     const sum = valorProviders.map((user) => {
         const nomeValor = {
@@ -62,29 +63,47 @@ export const Dashboard = () => {
         //api.post('totalPerDay', {type: periodChart}).then(resp => {
             
         // })
-        api.get(`smsPeriodo/${periodChart}`).then(response => setTeste(response.data))
-        if (periodChart ===  '30'){
-            setColuna(['Jan','Fev','Mar','Abr','Maio','Jun','Jul','Ago','Sep','Out','Nov','Dez']);
-            setLinhaSms([10,20,30,40,50,60,70,80,10,15,50,20]);
+        async function getGraph() {
+            try {
+                await api.get(`smsPeriodo/${periodChart}`).then(response => setTeste(response.data))
+            } catch (error) {
+                console.log(error)
+            }
+            
+
+            if (periodChart ===  '30'){
+                setColuna(date.reverse());
+                setLinhaSms(qtd.reverse());
+            }
+            else if (periodChart === '7') {
+                setColuna(date.reverse());
+                setLinhaSms(qtd.reverse());
+                console.log('entrou aqui')
+            }
+    
         }
-        else if (periodChart === '7') {
-            setColuna();
-            setLinhaSms([20,15,34,21,43,12,19]);
-        }
-        
+        getGraph()
         console.log(periodChart);
     }, [periodChart])
 
 
-    const grafico = teste.map((user) => {
-        const name = {
-            teste1: user.date ? format(parseISO(user.date),'dd/MM') : '2021-01-01' ,
-            teste2: user.qtd 
-        }
+    const date = teste.map((user) => {
+        const name = [
+            user.date ? format(parseISO(user.date),'dd/MM') : '2021-01-01'
+        ]
         return name
     })
 
-    console.log('aaaaaa',grafico)
+    const qtd = teste.map((user) => {
+        const name = [
+            user.qtd
+            //teste2: user.qtd 
+        ]
+        return name
+    })
+
+    console.log('a', date)
+    console.log('b', qtd)
 
     const chartData = {
         labels: coluna,
