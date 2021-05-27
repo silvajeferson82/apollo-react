@@ -110,26 +110,22 @@ export const Dashboard = () => {
             {
                 label: 'Relatorio envio SMS ',
                 data: linhaSms,
-                fill: false,
+                fill: true,
                 borderColor: '#03A9F4'
             }
         ]
     };
 
     return (
-    
-
         <div className="p-grid dashboard">
             {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
-                <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>
-                    
-                    </Dialog>
-          
+                    <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>  
+                </Dialog>
              : false}
             
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-1"><h1>CADASTROS NA BASE</h1>
+                <div className="overview-box overview-box-1"><h1 style={{fon}}>CADASTROS NA BASE</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -137,7 +133,7 @@ export const Dashboard = () => {
                         </div>
                         
                     </div>
-                    <img src="assets/layout/images/dashboard/graph-blue.svg" alt="apollo-layout" />
+                    <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>
 
@@ -155,7 +151,7 @@ export const Dashboard = () => {
                         </div>
                         
                     </div>
-                    <img src="assets/layout/images/dashboard/graph-green.svg" alt="apollo-layout" />
+                    <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>
 
@@ -169,7 +165,7 @@ export const Dashboard = () => {
                         </div>
                         
                     </div>
-                    <img src="assets/layout/images/dashboard/graph-yellow.svg" alt="apollo-layout" />
+                    <img src="assets/layout/images/dashboard/graph-red.svg" alt="apollo-layout" />
                 </div>
             </div>
 
