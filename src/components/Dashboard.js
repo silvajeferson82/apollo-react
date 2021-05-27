@@ -4,18 +4,18 @@ import { Panel } from 'primereact/panel'
 import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
-import {format, parseISO, set} from 'date-fns';
+import {format, parseISO} from 'date-fns';
 
 export const Dashboard = () => {
 
-    useEffect(() => {
-        //api.get('sms').then(resp => {
-        //resp.data.month = []
-        //resp.data.values = []
-        //const a = resp.data.month
-        //const b = resp.data.values
-        // })
-    }, []) 
+    // useEffect(() => {
+    //     //api.get('sms').then(resp => {
+    //     //resp.data.month = []
+    //     //resp.data.values = []
+    //     //const a = resp.data.month
+    //     //const b = resp.data.values
+    //     // })
+    // }, []) 
    
     const [events, setEvents] = useState(null);
     const [pessoa, setPessoa] = useState({})
@@ -23,29 +23,29 @@ export const Dashboard = () => {
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState([{}])
-    const [teste, setTeste] = useState([{}])
+    const [smsData, setSmsData] = useState([{}])
 
 
     const [periodChart, setPeriodChart] = useState("7");
     const [coluna, setColuna] = useState([]);
     const [linhaSms, setLinhaSms] = useState([]);
 
+    
     useEffect(() => {
-        async function getItems(){
-            try {
-                await api.get('/baseCpf').then(response => setPessoa(response.data))
-                await api.get('/valorNegociado').then(response => setValorNegociado(response.data))
-                await api.get('/totalSms').then(response => setSms(response.data))
-                await api.get('/totalEmail').then(response => setEmail(response.data))
-                await api.get('/valoresProviders').then(response => setValoresProviders(response.data))
-            } catch (error) {
-                console.log(error)
-            }
-        }
         getItems()
     }, []);
     
-    console.log('willys', periodChart)
+    async function getItems(){
+        try {
+            await api.get('/baseCpf').then(response => setPessoa(response.data))
+            await api.get('/valorNegociado').then(response => setValorNegociado(response.data))
+            await api.get('/totalSms').then(response => setSms(response.data))
+            await api.get('/totalEmail').then(response => setEmail(response.data))
+            await api.get('/valoresProviders').then(response => setValoresProviders(response.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
     
 
     const sum = valorProviders.map((user) => {
@@ -58,52 +58,68 @@ export const Dashboard = () => {
         return nomeValor
     })
     
-    useEffect(() => {
-        //api.post('totalPerDay', {type: periodChart}).then(resp => {
-            
-        // })
-        async function getGraph() {
-            try {
-                await api.get(`smsPeriodo/${periodChart}`).then(response => setTeste(response.data))
-            } catch (error) {
-                console.log(error)
-            }
-            
 
-            if (periodChart ===  '7'){
-                setColuna(date.reverse());
-                setLinhaSms(qtd.reverse());
-                console.log("aaaaaaaaaaaaaaaaaaaaa")
-                console.log('sacotex', teste)
-            }
-            else if (periodChart === '30') {
-                setColuna(date.reverse());
-                setLinhaSms(qtd.reverse());
-                console.log('entrou aqui')
-            }
     
-        }
+    useEffect(() => {
+        console.log('aqui');
+        console.log(periodChart);
         getGraph()
-        console.log("valor",periodChart);
     }, [periodChart])
 
+    async function getGraph() {
+        console.log(periodChart)
+        try {
+            console.log(periodChart)
+            await api.get(`smsPeriodo/${periodChart}`).then(response => setSmsData(response.data))
+        } catch (error) {
+            console.log(error)
+        }
+        // console.log(date);
+        // if (date.length ===  7){
+        //     setColuna(date.reverse());
+        //     setLinhaSms(qtd.reverse());    
+        // }
 
-    const date = teste.map((user) => {
-        const name = [
-            user.date ? format(parseISO(user.date),'dd/MM') : '2021-01-01'
-        ]
-        return name
-    })
+        // else if (date.length === 30) {
+        //     setColuna(date.reverse());
+        //     setLinhaSms(qtd.reverse());
+        // }
+    }
 
-    const qtd = teste.map((user) => {
-        const name = [
-            user.qtd
-        ]
-        return name
-    })
+    useEffect(() => {
+        buildGraph();
+    }, [smsData]);
 
-    console.log('a', date)
-    console.log('b', qtd)
+    function buildGraph() {
+        const date = smsData.map((user) => {
+            if (user && user.date) {
+                const name = [
+                    user.date ? format(parseISO(user.date),'dd/MM') : '2021-01-01'
+                ]
+                return name
+    
+            } else {
+                return 'caralho'
+            }
+        });
+
+        const qtd = smsData.map((user) => {
+            if (user && user.qtd) {
+                const name = [
+                    user.qtd
+                ]
+                return name
+            } else {
+                return 'aaaaaaa'
+            }
+        });
+
+            setColuna(date.reverse());
+            setLinhaSms(qtd.reverse());
+    }
+
+
+
 
     const chartData = {
         labels: coluna,
