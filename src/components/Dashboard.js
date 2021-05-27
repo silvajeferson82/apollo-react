@@ -5,6 +5,7 @@ import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
 import { ProgressSpinner } from 'primereact/progressspinner';
+import { Dialog } from 'primereact/dialog';
 import {format, parseISO} from 'date-fns';
 
 export const Dashboard = () => {
@@ -19,7 +20,7 @@ export const Dashboard = () => {
     const [coluna, setColuna] = useState([]);
     const [linhaSms, setLinhaSms] = useState([]);
     const [loading, setLoading] = useState();
-
+    const [displayBasic, setDisplayBasic] = useState(true);
     
     useEffect(() => {
         getItems()
@@ -39,8 +40,6 @@ export const Dashboard = () => {
         }
     }
 
-
-
     const sum = valorProviders.map((user) => {
         const nomeValor = {
             provider: user.usuario_nome?.toUpperCase(),
@@ -50,8 +49,6 @@ export const Dashboard = () => {
         }
         return nomeValor
     })
-    
-
     
     useEffect(() => {
         console.log('aqui');
@@ -67,16 +64,6 @@ export const Dashboard = () => {
         } catch (error) {
             console.log(error)
         }
-        // console.log(date);
-        // if (date.length ===  7){
-        //     setColuna(date.reverse());
-        //     setLinhaSms(qtd.reverse());    
-        // }
-
-        // else if (date.length === 30) {
-        //     setColuna(date.reverse());
-        //     setLinhaSms(qtd.reverse());
-        // }
     }
 
     useEffect(() => {
@@ -130,11 +117,15 @@ export const Dashboard = () => {
     };
 
     return (
-        <div className="p-grid dashboard">
-            {loading ? <div className="card">
-                <ProgressSpinner style={{width: '50px', height: '50px'}} strokeWidth="4" fill="#EEEEEE" animationDuration="2.5s"/>
+    
 
-            </div> : false}
+        <div className="p-grid dashboard">
+            {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
+                <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>
+                    
+                    </Dialog>
+          
+             : false}
             
 
             <div className="p-col-12 p-md-3">
