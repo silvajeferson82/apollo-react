@@ -101,9 +101,6 @@ export const Dashboard = () => {
             setLinhaSms(qtd.reverse());
     }
 
-
-
-
     const chartData = {
         labels: coluna,
         datasets: [
@@ -116,6 +113,14 @@ export const Dashboard = () => {
         ]
     };
 
+    const headerSms = ()=> {
+        return(
+            <div>
+            
+            </div>
+        )
+    }
+
     return (
         <div className="p-grid dashboard">
             {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
@@ -125,7 +130,7 @@ export const Dashboard = () => {
             
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-1"><h1 style={{fon}}>CADASTROS NA BASE</h1>
+                <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>CADASTROS NA BASE</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -139,7 +144,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
-                    <h1>VALORES DE TRANSAÇÃO</h1>
+                    <h1 style={{fontWeight: "bold"}}>VALORES DE TRANSAÇÃO</h1>
                     <div className="overview-value">
                         {new Intl.NumberFormat('pt-BR', 
                         {style: 'currency',currency: 'BRL'})
@@ -157,7 +162,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-3">
-                    <h1>SMS ENVIADOS</h1>
+                    <h1 style={{fontWeight: "bold"}}>SMS ENVIADOS</h1>
                     <div className="overview-value">{sms.Total_sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -171,7 +176,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
-                    <h1>E-MAIL'S ENVIADOS</h1>
+                    <h1 style={{fontWeight: "bold"}}>E-MAIL'S ENVIADOS</h1>
                     <div className="overview-value">{email.Total_email_geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -233,16 +238,19 @@ export const Dashboard = () => {
 
             {/**Grafico SMS */}
             <div className="p-col-12 p-md-6">
-                <Panel header="Acompanhamento SMS">
-                    <div>
+                <div style={{position:"relative"}}>
+                    <Panel header="Acompanhamento SMS">
+        
                         <strong>Período</strong>
                         <select onChange={(e) => setPeriodChart(e.target.value)}>
                             <option value="7">SEMANA</option>
                             <option value="30">MÊS</option>
                         </select>
-                    </div>
-                    <Chart type="line" data={chartData} />
-                </Panel>
+                        <Chart type="line" data={chartData} />
+                    </Panel>
+                </div>
+                
+                    
             </div>
         </div>
             
