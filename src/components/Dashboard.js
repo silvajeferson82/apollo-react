@@ -1,34 +1,24 @@
-import React, { useState, useEffect, useRe } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../service/api';
 import { Panel } from 'primereact/panel'
 import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
+import { ProgressSpinner } from 'primereact/progressspinner';
 import {format, parseISO} from 'date-fns';
 
 export const Dashboard = () => {
 
-    // useEffect(() => {
-    //     //api.get('sms').then(resp => {
-    //     //resp.data.month = []
-    //     //resp.data.values = []
-    //     //const a = resp.data.month
-    //     //const b = resp.data.values
-    //     // })
-    // }, []) 
-   
-    const [events, setEvents] = useState(null);
     const [pessoa, setPessoa] = useState({})
     const [valorNegociado, setValorNegociado] = useState({})
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState([{}])
     const [smsData, setSmsData] = useState([{}])
-
-
     const [periodChart, setPeriodChart] = useState("7");
     const [coluna, setColuna] = useState([]);
     const [linhaSms, setLinhaSms] = useState([]);
+    const [loading, setLoading] = useState();
 
     
     useEffect(() => {
@@ -37,16 +27,19 @@ export const Dashboard = () => {
     
     async function getItems(){
         try {
+            setLoading(true)
             await api.get('/baseCpf').then(response => setPessoa(response.data))
             await api.get('/valorNegociado').then(response => setValorNegociado(response.data))
             await api.get('/totalSms').then(response => setSms(response.data))
             await api.get('/totalEmail').then(response => setEmail(response.data))
             await api.get('/valoresProviders').then(response => setValoresProviders(response.data))
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
     }
-    
+
+
 
     const sum = valorProviders.map((user) => {
         const nomeValor = {
@@ -87,7 +80,10 @@ export const Dashboard = () => {
     }
 
     useEffect(() => {
-        buildGraph();
+        if (smsData.length > 0) {
+            buildGraph();
+
+        }
     }, [smsData]);
 
     function buildGraph() {
@@ -135,6 +131,12 @@ export const Dashboard = () => {
 
     return (
         <div className="p-grid dashboard">
+            {loading ? <div className="card">
+                <ProgressSpinner style={{width: '50px', height: '50px'}} strokeWidth="4" fill="#EEEEEE" animationDuration="2.5s"/>
+
+            </div> : false}
+            
+
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1"><h1>CADASTROS NA BASE</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
