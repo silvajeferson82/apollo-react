@@ -105,7 +105,7 @@ export const Dashboard = () => {
         labels: coluna,
         datasets: [
             {
-                label: 'Relatorio envio SMS ',
+                label: 'Fluxo de envio SMS',
                 data: linhaSms,
                 fill: true,
                 borderColor: '#03A9F4'
@@ -116,17 +116,23 @@ export const Dashboard = () => {
     const headerSms = ()=> {
         return(
             <div>
-            
+            <div style={{display:'flex'}}>
+                <span>Relatorio por Período</span>
+                    <select style={{border:"none", marginLeft:'0.8rem'}} onChange={(e) => setPeriodChart(e.target.value)}>
+                        <option value="7">SEMANA</option>
+                        <option value="30">MÊS</option>
+                    </select>
+            </div>
             </div>
         )
     }
 
     return (
         <div className="p-grid dashboard">
-            {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
+            {/* {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
                     <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>  
                 </Dialog>
-             : false}
+             : false} */}
             
 
             <div className="p-col-12 p-md-3">
@@ -191,28 +197,28 @@ export const Dashboard = () => {
                 <Panel header="Status" className="circle-panel">
                     <div className="p-grid p-nogutter">
                         <div className="p-col-12 p-lg-3 p-md-6">
-                            <div className="status-title" style={{ color: '#6ebc3b' }}>Pessoa Física</div>
+                            <div className="status-title" style={{ color: '#6ebc3b' }}>Natural Person</div>
                             <div className="circle1">
                                 <i className="pi pi-user"></i>
                                 <span style={{left: '30%'}}>{pessoa.Total_cpf}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
-                            <div className="status-title" style={{ color: '#f6a821' }}>Pessoa Jurídica</div>
+                            <div className="status-title" style={{ color: '#f6a821' }}>Legal Entity</div>
                             <div className="circle2">
                                 <i className="pi pi-briefcase"></i>
                                 <span>{pessoa.Total_cnpj}</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
-                            <div className="status-title" style={{ color: '#039ade' }}>Visitas na Plataforma</div>
+                            <div className="status-title" style={{ color: '#039ade' }}>PlatformViews</div>
                             <div className="circle3">
                                 <i className="pi pi-eye"></i>
                                 <span>50</span>
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
-                            <div className="status-title" style={{ color: '#d66351' }}>Mensagens Entregues</div>
+                            <div className="status-title" style={{ color: '#d66351' }}>Delivered Messages</div>
                             <div className="circle4">
                                 <i className="pi pi-download"></i>
                                 <span style={{top: "40%", left: "30%"}}>{Number(sms.Total_entregues).toFixed(0)}</span>
@@ -238,19 +244,10 @@ export const Dashboard = () => {
 
             {/**Grafico SMS */}
             <div className="p-col-12 p-md-6">
-                <div style={{position:"relative"}}>
-                    <Panel header="Acompanhamento SMS">
-        
-                        <strong>Período</strong>
-                        <select onChange={(e) => setPeriodChart(e.target.value)}>
-                            <option value="7">SEMANA</option>
-                            <option value="30">MÊS</option>
-                        </select>
-                        <Chart type="line" data={chartData} />
-                    </Panel>
-                </div>
+                <Panel header={headerSms}>
+                    <Chart type="line" data={chartData} />
+                </Panel>
                 
-                    
             </div>
         </div>
             
