@@ -137,15 +137,11 @@ export const Dashboard = () => {
     })
     
     useEffect(() => {
-        console.log('aqui');
-        console.log(periodChart);
         getGraph()
     }, [periodChart])
 
     async function getGraph() {
-        console.log(periodChart)
         try {
-            console.log(periodChart)
             await api.get(`smsPeriodo/${periodChart}`).then(response => setSmsData(response.data))
         } catch (error) {
             console.log(error)
@@ -168,7 +164,7 @@ export const Dashboard = () => {
                 return name
     
             } else {
-                return 'caralho'
+                return ''
             }
         });
 
@@ -179,7 +175,7 @@ export const Dashboard = () => {
                 ]
                 return name
             } else {
-                return 'aaaaaaa'
+                return ''
             }
         });
 

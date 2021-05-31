@@ -364,7 +364,7 @@ const App = () => {
 
                 {/* <div className="layout-content-container"> */}
                     <Route path="/" exact component={SignIn} />  
-                    <Route path="/" component={Dashboard} /> 
+                    <Route path="/dashboard" component={Dashboard} /> 
                 {/* </div> */}
 
                 <AppFooter />
