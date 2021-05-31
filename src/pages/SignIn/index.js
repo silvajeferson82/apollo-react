@@ -9,14 +9,14 @@ const SignIn = () => (
             <img src={logoImg} alt="Dashboard Investidores"/>
 
             <form>
-                <h1>Faça seu login</h1>
+                <h1>Login</h1>
                 <input placeholder="E-mail"/>
                 <input type="password" placeholder="Senha"/>
                 <button type="submit">Entrar</button>
                 <a href="forgot">Esqueci minha senha</a>
             </form>
 
-            <a href="login">Criar conta</a>
+            {/* <a href="login">Criar conta</a> */}
         </Content>
         <Background/>
     </Container>

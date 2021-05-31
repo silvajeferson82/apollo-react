@@ -15,6 +15,7 @@ export const Content = styled.div`
     place-content: center;
     width: 100%;
     max-width: 700px;
+    background-color: #0b2544;
 
     form {
         margin: 80px 0;
@@ -22,11 +23,12 @@ export const Content = styled.div`
         text-align: center;
 
         h1 {
+            color: #ffffff;
             margin-bottom: 24px;
         }
 
         input {
-            background: #232129;
+            background: #ffffff;
             border-radius: 10px;
             border: 2px solid #232129;
             padding: 16px;
@@ -43,19 +45,20 @@ export const Content = styled.div`
         }
 
         button {
-            background: #ff9000;
+            background: #61b34e;
             height: 56px;
             border-radius: 10px;
             border: 0;
             padding: 0 16px;
-            color: #312e38;
+            color: #0b2544;
             width: 100%;
-            font-weight: 500;
+            font-weight: 550;
             margin-top: 16px;
             transition: background-color 0.2s;
+            font-size: 16px;
 
             &:hover {
-                background: ${shade(0.2, '#ff9000')};
+                background: ${shade(0.1, '#61b34e')};
             }
         }
 
