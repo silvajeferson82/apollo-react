@@ -348,7 +348,7 @@ body a {
   padding: 10px 16px;
   height: 50px;
   box-sizing: border-box;
-  position: fixed;
+  position: relative;
   top: 0px;
   width: 100%;
   z-index: 102;
@@ -742,7 +742,7 @@ body a {
 .layout-wrapper .layout-content .layout-breadcrumb {
   background-color: #ffffff;
   border-bottom: 1px solid #dee2e6;
-  min-height: 42px;
+  min-height: 16px;
   padding: 0px 20px;
 }
 .layout-wrapper .layout-content .layout-breadcrumb:before, .layout-wrapper .layout-content .layout-breadcrumb:after {
@@ -1319,7 +1319,7 @@ body a {
     z-index: 100;
   }
   .layout-wrapper .layout-content {
-    padding: 50px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
 }
 .layout-config {

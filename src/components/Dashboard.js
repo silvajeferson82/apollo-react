@@ -6,7 +6,9 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Dialog } from 'primereact/dialog';
-import {format, parseISO} from 'date-fns';
+import { format, parseISO } from 'date-fns';
+import AppTopbar from '../AppTopbar';
+import AppBreadcrumb from '../AppBreadcrumb';
 
 export const Dashboard = () => {
 
@@ -21,6 +23,90 @@ export const Dashboard = () => {
     const [linhaSms, setLinhaSms] = useState([]);
     const [loading, setLoading] = useState();
     const [displayBasic, setDisplayBasic] = useState(true);
+
+    const [topbarMenuActive, setTopbarMenuActive] = useState(false);
+    const [activeTopbarItem, setActiveTopbarItem] = useState(null);
+    const [layoutMode, setLayoutMode] = useState('static');
+    const [overlayMenuActive, setOverlayMenuActive] = useState(false);
+    const [staticMenuDesktopInactive, setStaticMenuDesktopInactive] = useState(false);
+    const [staticMenuMobileActive, setStaticMenuMobileActive] = useState(false);
+    const [menuActive, setMenuActive] = useState(false);
+
+    let menuClick;
+    let topbarItemClick;
+
+    const onMenuButtonClick = (event) => {
+        menuClick = true;
+        setTopbarMenuActive(false);
+
+        if (layoutMode === 'overlay' && !isMobile()) {
+            setOverlayMenuActive(prevState => !prevState);
+        } else {
+            if (isDesktop())
+                setStaticMenuDesktopInactive(prevState => !prevState);
+            else
+                setStaticMenuMobileActive(prevState => !prevState);
+        }
+
+        event.preventDefault();
+    }
+
+    const onTopbarMenuButtonClick = (event) => {
+        topbarItemClick = true;
+        setTopbarMenuActive(prevState => !prevState)
+        hideOverlayMenu();
+        event.preventDefault();
+    }
+    
+    const onTopbarItemClick = (event) => {
+        topbarItemClick = true;
+
+        if (activeTopbarItem === event.item)
+            setActiveTopbarItem(null);
+        else
+            setActiveTopbarItem(event.item);
+
+        event.originalEvent.preventDefault();
+    }
+
+    const hideOverlayMenu = () => {
+        setOverlayMenuActive(false);
+        setStaticMenuMobileActive(false)
+    }
+
+    const onDocumentClick = (event) => {
+        if (!topbarItemClick) {
+            setActiveTopbarItem(null)
+            setTopbarMenuActive(false)
+        }
+
+        if (!menuClick) {
+            if (isHorizontal() || isSlim()) {
+                setMenuActive(false)
+            }
+
+            hideOverlayMenu();
+        }
+
+        topbarItemClick = false;
+        menuClick = false;
+    }
+
+    const isMobile = () => {
+        return window.innerWidth < 1025;
+    }
+
+    const isDesktop = () => {
+        return window.innerWidth > 1024;
+    }
+
+    const isHorizontal = () => {
+        return layoutMode === 'horizontal';
+    }
+
+    const isSlim = () => {
+        return layoutMode === 'slim';
+    }
     
     useEffect(() => {
         getItems()
@@ -128,13 +214,23 @@ export const Dashboard = () => {
     }
 
     return (
+
+    <div>
+            <AppTopbar
+                topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
+                onMenuButtonClick={onMenuButtonClick}
+                onTopbarMenuButtonClick={onTopbarMenuButtonClick}
+                onTopbarItemClick={onTopbarItemClick} />
+            <AppBreadcrumb />
+
+        <div className="layout-content-container">    
         <div className="p-grid dashboard">
             {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
                     <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>  
                 </Dialog>
              : false} 
             
-
+            
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>BASE RECORDS</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
@@ -250,7 +346,8 @@ export const Dashboard = () => {
                 
             </div>
         </div>
-            
+        </div> 
+        </div>   
         
     )
 

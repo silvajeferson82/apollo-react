@@ -8,7 +8,7 @@ import AppFooter from './AppFooter';
 
 
 import { Dashboard } from './components/Dashboard';
-
+import SignIn from './pages/SignIn'
 import PrimeReact from 'primereact/api';
 
 import { ProgressBar } from 'primereact/progressbar'
@@ -151,118 +151,118 @@ const App = () => {
         }
     ]; */
 
-    const onInputStyleChange = (inputStyle) => {
-        setInputStyle(inputStyle);
-    }
+    // const onInputStyleChange = (inputStyle) => {
+    //     setInputStyle(inputStyle);
+    // }
 
-    const onRippleChange = (e) => {
-        PrimeReact.ripple = e.value;
-        setRipple(e.value);
-    }
+    // const onRippleChange = (e) => {
+    //     PrimeReact.ripple = e.value;
+    //     setRipple(e.value);
+    // }
 
-    const onMenuClick = (event) => {
-        menuClick = true;
-    }
+    // const onMenuClick = (event) => {
+    //     menuClick = true;
+    // }
 
-    const onMenuButtonClick = (event) => {
-        menuClick = true;
-        setTopbarMenuActive(false);
+    // const onMenuButtonClick = (event) => {
+    //     menuClick = true;
+    //     setTopbarMenuActive(false);
 
-        if (layoutMode === 'overlay' && !isMobile()) {
-            setOverlayMenuActive(prevState => !prevState);
-        } else {
-            if (isDesktop())
-                setStaticMenuDesktopInactive(prevState => !prevState);
-            else
-                setStaticMenuMobileActive(prevState => !prevState);
-        }
+    //     if (layoutMode === 'overlay' && !isMobile()) {
+    //         setOverlayMenuActive(prevState => !prevState);
+    //     } else {
+    //         if (isDesktop())
+    //             setStaticMenuDesktopInactive(prevState => !prevState);
+    //         else
+    //             setStaticMenuMobileActive(prevState => !prevState);
+    //     }
 
-        event.preventDefault();
-    }
+    //     event.preventDefault();
+    // }
 
-    const onTopbarMenuButtonClick = (event) => {
-        topbarItemClick = true;
-        setTopbarMenuActive(prevState => !prevState)
-        hideOverlayMenu();
-        event.preventDefault();
-    }
+    // const onTopbarMenuButtonClick = (event) => {
+    //     topbarItemClick = true;
+    //     setTopbarMenuActive(prevState => !prevState)
+    //     hideOverlayMenu();
+    //     event.preventDefault();
+    // }
 
-    const onTopbarItemClick = (event) => {
-        topbarItemClick = true;
+    // const onTopbarItemClick = (event) => {
+    //     topbarItemClick = true;
 
-        if (activeTopbarItem === event.item)
-            setActiveTopbarItem(null);
-        else
-            setActiveTopbarItem(event.item);
+    //     if (activeTopbarItem === event.item)
+    //         setActiveTopbarItem(null);
+    //     else
+    //         setActiveTopbarItem(event.item);
 
-        event.originalEvent.preventDefault();
-    }
+    //     event.originalEvent.preventDefault();
+    // }
 
-    const onMenuItemClick = (event) => {
-        if (!event.item.items) {
-            hideOverlayMenu();
-        }
-        if (!event.item.items && (isHorizontal() || isSlim())) {
-            setMenuActive(false);
-        }
-    }
+    // const onMenuItemClick = (event) => {
+    //     if (!event.item.items) {
+    //         hideOverlayMenu();
+    //     }
+    //     if (!event.item.items && (isHorizontal() || isSlim())) {
+    //         setMenuActive(false);
+    //     }
+    // }
 
-    const onRootMenuItemClick = (event) => {
-        setMenuActive(prevState => !prevState);
-    }
+    // const onRootMenuItemClick = (event) => {
+    //     setMenuActive(prevState => !prevState);
+    // }
 
-    const onDocumentClick = (event) => {
-        if (!topbarItemClick) {
-            setActiveTopbarItem(null)
-            setTopbarMenuActive(false)
-        }
+    // const onDocumentClick = (event) => {
+    //     if (!topbarItemClick) {
+    //         setActiveTopbarItem(null)
+    //         setTopbarMenuActive(false)
+    //     }
 
-        if (!menuClick) {
-            if (isHorizontal() || isSlim()) {
-                setMenuActive(false)
-            }
+    //     if (!menuClick) {
+    //         if (isHorizontal() || isSlim()) {
+    //             setMenuActive(false)
+    //         }
 
-            hideOverlayMenu();
-        }
+    //         hideOverlayMenu();
+    //     }
 
-        topbarItemClick = false;
-        menuClick = false;
-    }
+    //     topbarItemClick = false;
+    //     menuClick = false;
+    // }
 
-    const isMenuVisible = () => {
-        if (isDesktop()) {
-            if (layoutMode === 'static')
-                return !staticMenuDesktopInactive;
-            else if (layoutMode === 'overlay')
-                return overlayMenuActive;
-            else
-                return true;
-        }
-        else {
-            return true;
-        }
-    };
+    // const isMenuVisible = () => {
+    //     if (isDesktop()) {
+    //         if (layoutMode === 'static')
+    //             return !staticMenuDesktopInactive;
+    //         else if (layoutMode === 'overlay')
+    //             return overlayMenuActive;
+    //         else
+    //             return true;
+    //     }
+    //     else {
+    //         return true;
+    //     }
+    // };
 
-    const hideOverlayMenu = () => {
-        setOverlayMenuActive(false);
-        setStaticMenuMobileActive(false)
-    }
+    // const hideOverlayMenu = () => {
+    //     setOverlayMenuActive(false);
+    //     setStaticMenuMobileActive(false)
+    // }
 
-    const isMobile = () => {
-        return window.innerWidth < 1025;
-    }
+    // const isMobile = () => {
+    //     return window.innerWidth < 1025;
+    // }
 
-    const isDesktop = () => {
-        return window.innerWidth > 1024;
-    }
+    // const isDesktop = () => {
+    //     return window.innerWidth > 1024;
+    // }
 
-    const isHorizontal = () => {
-        return layoutMode === 'horizontal';
-    }
+    // const isHorizontal = () => {
+    //     return layoutMode === 'horizontal';
+    // }
 
-    const isSlim = () => {
-        return layoutMode === 'slim';
-    }
+    // const isSlim = () => {
+    //     return layoutMode === 'slim';
+    // }
 
     const changeMenuMode = (event) => {
         setLayoutMode(event.menuMode);
@@ -345,25 +345,27 @@ const App = () => {
         'p-input-filled': inputStyle === 'filled'
     });
 
-    const menuContainerClassName = classNames('layout-menu-container', { 'layout-menu-container-inactive': !isMenuVisible() })
+    // const menuContainerClassName = classNames('layout-menu-container', { 'layout-menu-container-inactive': !isMenuVisible() })
 
     return (
-        <div className={layoutClassName} onClick={onDocumentClick}>
+        <div className={layoutClassName}>
+             {/* onClick={onDocumentClick}> */}
 
-            <AppTopbar
+            {/* <AppTopbar
                 topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
                 onMenuButtonClick={onMenuButtonClick}
                 onTopbarMenuButtonClick={onTopbarMenuButtonClick}
-                onTopbarItemClick={onTopbarItemClick} />
+                onTopbarItemClick={onTopbarItemClick} /> */}
 
     
 
             <div className="layout-content">
-                <AppBreadcrumb />
+                {/* <AppBreadcrumb /> */}
 
-                <div className="layout-content-container">
-                    <Route path="/" exact component={Dashboard} />  
-                </div>
+                {/* <div className="layout-content-container"> */}
+                    <Route path="/" exact component={SignIn} />  
+                    <Route path="/" component={Dashboard} /> 
+                {/* </div> */}
 
                 <AppFooter />
 
