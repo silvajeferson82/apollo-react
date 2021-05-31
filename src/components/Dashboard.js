@@ -129,10 +129,10 @@ export const Dashboard = () => {
 
     return (
         <div className="p-grid dashboard">
-            {/* {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
+            {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
                     <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>  
                 </Dialog>
-             : false} */}
+             : false} 
             
 
             <div className="p-col-12 p-md-3">
@@ -236,7 +236,7 @@ export const Dashboard = () => {
                          value={sum}
                          >
                             <Column field="provider" header="Provider"></Column>
-                            <Column style={{textAlign: "right"}} field="valor_provider" header="Valor Negociado"></Column>
+                            <Column style={{textAlign: "right"}} field="valor_provider" header="Traded Values"></Column>
                         </DataTable>
                     </div>
                 </div>

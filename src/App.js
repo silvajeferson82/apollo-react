@@ -5,42 +5,9 @@ import { Route } from 'react-router-dom';
 import AppTopbar from './AppTopbar';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppFooter from './AppFooter';
-import AppMenu from './AppMenu';
-import AppConfig from './AppConfig';
+
 
 import { Dashboard } from './components/Dashboard';
-import { ButtonDemo } from './components/ButtonDemo';
-import { ChartDemo } from './components/ChartDemo';
-import { MessagesDemo } from './components/MessagesDemo';
-import { Documentation } from './components/Documentation';
-import { FileDemo } from './components/FileDemo';
-import { FormLayoutDemo } from './components/FormLayoutDemo';
-import { InputDemo } from './components/InputDemo';
-import { ListDemo } from './components/ListDemo';
-import { MiscDemo } from './components/MiscDemo';
-import { MenuDemo } from './components/MenuDemo';
-import { OverlayDemo } from './components/OverlayDemo';
-import { PanelDemo } from './components/PanelDemo';
-import { TableDemo } from './components/TableDemo';
-import { TreeDemo } from './components/TreeDemo';
-import { FloatLabelDemo } from './components/FloatLabelDemo';
-import { InvalidStateDemo } from './components/InvalidStateDemo';
-import { MediaDemo } from './components/MediaDemo';
-import { DisplayDemo } from './utilities/DisplayDemo';
-import { ElevationDemo } from './utilities/ElevationDemo';
-import { FlexBoxDemo } from './utilities/FlexboxDemo';
-import { GridDemo } from './utilities/GridDemo';
-import { IconsDemo } from './utilities/IconsDemo';
-import { SpacingDemo } from './utilities/SpacingDemo';
-import { TextDemo } from './utilities/TextDemo';
-import { TypographyDemo } from './utilities/TypographyDemo';
-import { Widgets } from './utilities/Widgets';
-import { CrudDemo } from './pages/CrudDemo';
-import { EmptyPage } from './pages/EmptyPage';
-import { Invoice } from './pages/Invoice';
-import { Help } from './pages/Help';
-import { CalendarDemo } from './pages/CalendarDemo';
-import { TimelineDemo } from './pages/TimelineDemo';
 
 import PrimeReact from 'primereact/api';
 
@@ -395,52 +362,13 @@ const App = () => {
                 <AppBreadcrumb />
 
                 <div className="layout-content-container">
-                    <Route path="/" exact component={Dashboard} />
-                    {/* <Route path="/documentation" component={Documentation} />
-                    <Route path="/formlayout" component={FormLayoutDemo} />
-                    <Route path="/floatlabel" component={FloatLabelDemo} />
-                    <Route path="/invalidstate" component={InvalidStateDemo} />
-                    <Route path="/input" component={InputDemo} />
-                    <Route path="/button" component={ButtonDemo} />
-                    <Route path="/table" component={TableDemo} />
-                    <Route path="/list" component={ListDemo} />
-                    <Route path="/tree" component={TreeDemo} />
-                    <Route path="/panel" component={PanelDemo} />
-                    <Route path="/overlay" component={OverlayDemo} />
-                    <Route path="/menu" component={MenuDemo} />
-                    <Route path="/messages" component={MessagesDemo} />
-                    <Route path="/file" component={FileDemo} />
-                    <Route path="/chart" component={ChartDemo} />
-                    <Route path="/misc" component={MiscDemo} />
-                    <Route path="/display" component={DisplayDemo} />
-                    <Route path="/elevation" component={ElevationDemo} />
-                    <Route path="/flexbox" component={FlexBoxDemo} />
-                    <Route path="/icons" component={IconsDemo} />
-                    <Route path="/grid" component={GridDemo} />
-                    <Route path="/spacing" component={SpacingDemo} />
-                    <Route path="/typography" component={TypographyDemo} />
-                    <Route path="/text" component={TextDemo} />
-                    <Route path="/crud" component={CrudDemo} />
-                    <Route path="/timeline" component={TimelineDemo} />
-                    <Route path="/calendar" component={CalendarDemo} />
-                    <Route path="/help" component={Help} />
-                    <Route path="/invoice" component={Invoice} />
-                    <Route path="/empty" component={EmptyPage} />
-                    <Route path="/widgets" component={Widgets} />
-                    <Route path="/media" component={MediaDemo} /> */}
+                    <Route path="/" exact component={Dashboard} />  
                 </div>
 
                 <AppFooter />
 
                 {staticMenuMobileActive && <div className="layout-mask"></div>}
             </div>
-
-
-            {/* <AppConfig themeColor={themeColor} onThemeChange={onThemeChange}
-                inputStyle={inputStyle} onInputStyleChange={onInputStyleChange}
-                layoutMode={layoutMode} changeMenuMode={changeMenuMode}
-                ripple={ripple} onRippleChange={onRippleChange}
-                scheme={scheme} onSchemeChange={onSchemeChange} /> */}
         </div>
     );
 
