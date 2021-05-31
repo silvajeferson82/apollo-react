@@ -136,7 +136,7 @@ export const Dashboard = () => {
             
 
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>CADASTROS NA BASE</h1>
+                <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>BASE RECORDS</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -168,7 +168,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-3">
-                    <h1 style={{fontWeight: "bold"}}>SMS ENVIADOS</h1>
+                    <h1 style={{fontWeight: "bold"}}>SMS SENTS</h1>
                     <div className="overview-value">{sms.Total_sms}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -182,7 +182,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
-                    <h1 style={{fontWeight: "bold"}}>E-MAIL'S ENVIADOS</h1>
+                    <h1 style={{fontWeight: "bold"}}>SENT EMAILS</h1>
                     <div className="overview-value">{email.Total_email_geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">

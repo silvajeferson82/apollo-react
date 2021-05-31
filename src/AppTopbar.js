@@ -20,18 +20,20 @@ const AppTopbar = (props) => {
         <div className="topbar clearfix">
 
             <div className="logo-link" style={{marginLeft:"0.625rem"}}>
+                <a href="https://direto.tech/" target="_blank">
                 <img className="logo" alt="direto-layout" src="assets/layout/images/logo_branca_direto.png" />
+                </a>
             </div>
 
             {/* <button type="button" className="p-link menu-button" id="menu-button" onClick={props.onMenuButtonClick}>
                 <i className="pi pi-align-left"></i>
             </button> */}
 
-            {/* <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
+            <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
                 <span className="username">Usuário</span>
-                <img src="assets/layout/images/avatar/avatar.png" alt="apollo-layout" />
+                <img src="assets/layout/images/avatar/will_avatar.png" alt="apollo-layout" />
                 <i className="pi pi-angle-down"></i>
-            </button> */}
+            </button>
 
             {/* <span className="topbar-search">
                 <InputText placeholder="Search" />
@@ -40,7 +42,7 @@ const AppTopbar = (props) => {
 
 
             <ul className={topbarItemsClassName}>
-                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
+                 <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
                     onClick={(e) => onTopbarItemClick(e, 'profile')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-power-off"></i>
@@ -74,10 +76,10 @@ const AppTopbar = (props) => {
                                 </button>
                             </li>
                         </ul>
-                    </CSSTransition>
+                    </CSSTransition> */}
                 </li>
 
-                <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'settings' })}
+                {/* <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'settings' })}
                     onClick={(e) => onTopbarItemClick(e, 'settings')}>
                     <button type="button" className="p-link">
                         <i className="topbar-icon pi pi-fw pi-cog"></i>
@@ -193,7 +195,7 @@ const AppTopbar = (props) => {
                             </li>
                         </ul>
                     </CSSTransition> }
-                </li> */}
+                </li> */} {/**Comentar até aqui */}
             </ul>
         </div>
     );
