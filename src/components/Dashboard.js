@@ -187,7 +187,7 @@ export const Dashboard = () => {
         labels: coluna,
         datasets: [
             {
-                label: 'Fluxo de envio SMS',
+                label: 'SMS send flow',
                 data: linhaSms,
                 fill: true,
                 borderColor: '#03A9F4'
@@ -199,10 +199,10 @@ export const Dashboard = () => {
         return(
             <div>
             <div style={{display:'flex'}}>
-                <span>Relatorio por Período</span>
+                <span>Report By Period</span>
                     <select style={{border:"none", marginLeft:'0.8rem'}} onChange={(e) => setPeriodChart(e.target.value)}>
-                        <option value="7">SEMANA</option>
-                        <option value="30">MÊS</option>
+                        <option value="7">WEEK</option>
+                        <option value="30">MONTH</option>
                     </select>
             </div>
             </div>
@@ -242,7 +242,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
-                    <h1 style={{fontWeight: "bold"}}>VALORES DE TRANSAÇÃO</h1>
+                    <h1 style={{fontWeight: "bold"}}>TRANSACTION VALUES</h1>
                     <div className="overview-value">
                         {new Intl.NumberFormat('pt-BR', 
                         {style: 'currency',currency: 'BRL'})
