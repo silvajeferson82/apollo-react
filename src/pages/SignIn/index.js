@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Content, Background } from './styles';
-import logoImg from '../../assets/logo-pague-direto.png';
+import logoImg from '../../assets/logodireto.png';
 // import { FiLogin } from 'react-icons';
 
 const SignIn = () => (
