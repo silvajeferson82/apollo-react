@@ -187,7 +187,7 @@ export const Dashboard = () => {
         labels: coluna,
         datasets: [
             {
-                label: 'SMS send flow',
+                label: 'SMS sended flow',
                 data: linhaSms,
                 fill: true,
                 borderColor: '#03A9F4'
@@ -199,7 +199,7 @@ export const Dashboard = () => {
         return(
             <div>
             <div style={{display:'flex'}}>
-                <span>Report By Period</span>
+                <span>Chart By Period</span>
                     <select style={{border:"none", marginLeft:'0.8rem'}} onChange={(e) => setPeriodChart(e.target.value)}>
                         <option value="7">WEEK</option>
                         <option value="30">MONTH</option>
@@ -228,7 +228,7 @@ export const Dashboard = () => {
             
             
             <div className="p-col-12 p-md-3">
-                <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>BASE RECORDS</h1>
+                <div className="overview-box overview-box-1"><h1 style={{fontWeight: "bold"}}>PLATFORM PROFILES</h1>
                     <div className="overview-value">{pessoa.Total_base}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -242,7 +242,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-2">
-                    <h1 style={{fontWeight: "bold"}}>TRANSACTION VALUES</h1>
+                    <h1 style={{fontWeight: "bold"}}>TRANSACTIONS VALUES</h1>
                     <div className="overview-value">
                         {new Intl.NumberFormat('pt-BR', 
                         {style: 'currency',currency: 'BRL'})
@@ -274,7 +274,7 @@ export const Dashboard = () => {
 
             <div className="p-col-12 p-md-3">
                 <div className="overview-box overview-box-4">
-                    <h1 style={{fontWeight: "bold"}}>SENT EMAILS</h1>
+                    <h1 style={{fontWeight: "bold"}}>EMAILS SENTS</h1>
                     <div className="overview-value">{email.Total_email_geral}</div>
                     <div className="overview-ratio">
                         <div className="overview-direction">
@@ -303,7 +303,7 @@ export const Dashboard = () => {
                             </div>
                         </div>
                         <div className="p-col-12 p-lg-3 p-md-6">
-                            <div className="status-title" style={{ color: '#039ade' }}>PlatformViews</div>
+                            <div className="status-title" style={{ color: '#039ade' }}>Platform Views</div>
                             <div className="circle3">
                                 <i className="pi pi-eye"></i>
                                 <span>50</span>
