@@ -3216,7 +3216,7 @@
   margin-right: 0;
 }
 .p-dialog .p-dialog-content {
-  background: #ffffff;
+  background: transparent;
   color: #495057;
   padding: 0 1.5rem;
 }

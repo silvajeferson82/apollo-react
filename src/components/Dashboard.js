@@ -221,7 +221,7 @@ export const Dashboard = () => {
 
         <div className="layout-content-container">    
         <div className="p-grid dashboard">
-            {loading ? <Dialog closable={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
+            {loading ? <Dialog closable={false} style={{boxShadow: "none"}} showHeader={false} visible={displayBasic} onHide={() => setDisplayBasic(false)}>
                     <ProgressSpinner style={{width: '70px', padding: "20px", margin: '20px'}} strokeWidth="4" animationDuration="2.5s"/>  
                 </Dialog>
              : false} 
