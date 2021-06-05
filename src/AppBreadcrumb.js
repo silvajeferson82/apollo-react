@@ -5,9 +5,6 @@ import { useHistory, useLocation, withRouter } from 'react-router-dom';
 const AppBreadcrumb = () => {
 
     const location = useLocation();
-    const history = useHistory();
-
-    const paths = location.pathname.split('/');
 
     return (
         <div className="layout-breadcrumb">

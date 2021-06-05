@@ -6,15 +6,19 @@ import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import getValidationErrors from '../../utilities/getValidationErrors';
+import api from '../../service/api';
+import { useHistory } from 'react-router-dom';
 
 const SignIn = () => {
+    let history = useHistory();
     const formRef = useRef(null);
-
     console.log(formRef)
 
         const handleSubmit = useCallback(async (data) => {
-            console.log(data)
+
+
             try {
+
                 formRef.current?.setErrors({});
 
                 const schema = Yup.object().shape({
@@ -25,8 +29,24 @@ const SignIn = () => {
                 await schema.validate(data, {
                     abortEarly: false
                 })
+
+                await api.post('/usuarioLogin', { 
+                    usuario: data.email,
+                    senha: data.password
+                 }).then(resp => {
+                     const { data } = resp;
+                     localStorage.setItem('isAuthenticated', window.btoa(data));
+                     if (data) {
+                         history.push('/home');
+                     }
+                     if (resp) {
+                         const isAuthenticated = true;
+                         localStorage.setItem('isSign', isAuthenticated);
+                     }
+                     console.log('aaaaaaaaaaaaaaaaaaaah',resp)
+                 } )
             }   catch (err) {
-                    console.log(err)
+                    console.log('erroooow',err)
                     const errors = getValidationErrors(err);
                     formRef.current?.setErrors(errors);
             }

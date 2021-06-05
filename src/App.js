@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Route } from 'react-router-dom';
+// import { Route, Router, Switch } from 'react-router-dom';
 
 import AppTopbar from './AppTopbar';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppFooter from './AppFooter';
+import Routes from './routes/routes';
 
 
 import { Dashboard } from './components/Dashboard';
@@ -13,12 +14,17 @@ import PrimeReact from 'primereact/api';
 
 import { ProgressBar } from 'primereact/progressbar'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.scss';
 
 const App = () => {
+
+    
 
     const [layoutMode, setLayoutMode] = useState('static');
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
@@ -363,11 +369,16 @@ const App = () => {
                 {/* <AppBreadcrumb /> */}
 
                 {/* <div className="layout-content-container"> */}
-                    <Route path="/" exact component={SignIn} />  
-                    <Route path="/dashboard" component={Dashboard} /> 
+                {/* <Router history={history}>
+                        <Switch>
+                            <Route path="/login" exact component={SignIn} />  
+                            <Route path="/" component={Dashboard} />
+                        </Switch>
+                </Router> */}
                 {/* </div> */}
-
+                <Routes/>
                 <AppFooter />
+                <ToastContainer />
 
                 {staticMenuMobileActive && <div className="layout-mask"></div>}
             </div>
