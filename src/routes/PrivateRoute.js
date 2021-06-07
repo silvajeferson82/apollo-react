@@ -11,7 +11,7 @@ const PrivateRoute = (props)  => {
         isLogged = true
         // toast.success('sucesso')
     } else {
-        toast.error('E-mail ou senha incorretos!');
+        toast.error('you do not have permission to access the platform');
     }
 
     return isLogged ? <Route {...props}/> : <Redirect to="/login"/>

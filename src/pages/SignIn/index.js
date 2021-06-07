@@ -8,31 +8,30 @@ import * as Yup from 'yup';
 import getValidationErrors from '../../utilities/getValidationErrors';
 import api from '../../service/api';
 import { useHistory } from 'react-router-dom';
+import { GoogleLogin } from 'react-google-login';
 
 const SignIn = () => {
     let history = useHistory();
     const formRef = useRef(null);
-    console.log(formRef)
 
         const handleSubmit = useCallback(async (data) => {
-
 
             try {
 
                 formRef.current?.setErrors({});
 
-                const schema = Yup.object().shape({
-                    email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-                    password: Yup.string().required('Senha obrigatória')
-                });
+                // const schema = Yup.object().shape({
+                //     email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
+                //     password: Yup.string().required('Senha obrigatória')
+                // });
 
-                await schema.validate(data, {
-                    abortEarly: false
-                })
+                // await schema.validate(data, {
+                //     abortEarly: false
+                // })
+                
 
                 await api.post('/usuarioLogin', { 
-                    usuario: data.email,
-                    senha: data.password
+                    usuario: data.profileObj.email
                  }).then(resp => {
                      const { data } = resp;
                      localStorage.setItem('isAuthenticated', window.btoa(data));
@@ -43,10 +42,9 @@ const SignIn = () => {
                          const isAuthenticated = true;
                          localStorage.setItem('isSign', isAuthenticated);
                      }
-                     console.log('aaaaaaaaaaaaaaaaaaaah',resp)
                  } )
             }   catch (err) {
-                    console.log('erroooow',err)
+                    // console.log('erroooow',err)
                     const errors = getValidationErrors(err);
                     formRef.current?.setErrors(errors);
             }
@@ -60,10 +58,17 @@ const SignIn = () => {
                 <Form ref={formRef} onSubmit={handleSubmit}> 
                 
                     <h1>Login</h1>
-                    <Input name="email" icon={FiMail} placeholder="E-mail"/>
-                    <Input name="password" icon={FiLock} type="password" placeholder="Senha"/>
-                    <button type="submit">Entrar</button>
-                    <a href="forgot">Esqueci minha senha</a>
+                    {/* <Input name="email" icon={FiMail} placeholder="E-mail"/> */}
+                    {/* <Input name="password" icon={FiLock} type="password" placeholder="Senha"/> */}
+                    <GoogleLogin
+    clientId="906405271055-bc7ka1halimt9p2gg44m63qb8gi765nk.apps.googleusercontent.com"
+    buttonText="Sign in with Google"
+    onSuccess={handleSubmit}
+    onFailure={handleSubmit}
+    cookiePolicy={'single_host_origin'}
+  />
+                    {/* <button type="submit">Entrar</button> */}
+                    {/* <a href="forgot">Esqueci minha senha</a> */}
                 </Form>
 
                 {/* <a href="login">Criar conta</a> */}

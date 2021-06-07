@@ -1,5 +1,20 @@
 @import './assets/flags/flags.css';
 
+// .chartjs-render-monitor {
+//     height: 330px !important;
+//     width: 700px !important;
+// }
+
+.datatable-scroll-demo .loading-text {
+    display: block;
+    background-color: #f1f1f1;
+    min-height: 199px;
+    animation: pulse 1s infinite ease-in-out;
+    text-indent: -99999px;
+    overflow: hidden;
+}
+                 
+
 .floatlabel-demo {
 	.p-field {
         margin-top: 2rem;

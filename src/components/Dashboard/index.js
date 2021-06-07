@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import api from '../service/api';
+import api from '../../service/api';
 import { Panel } from 'primereact/panel'
 import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
 import { ProgressSpinner } from 'primereact/progressspinner';
+import { Container } from './styles';
 import { Dialog } from 'primereact/dialog';
 import { format, parseISO } from 'date-fns';
-import AppTopbar from '../AppTopbar';
-import AppBreadcrumb from '../AppBreadcrumb';
+import AppTopbar from '../../AppTopbar';
+import AppBreadcrumb from '../../AppBreadcrumb';
 
-export const Dashboard = () => {
+const Dashboard = () => {
 
     const [pessoa, setPessoa] = useState({})
     const [valorNegociado, setValorNegociado] = useState({})
@@ -321,6 +322,7 @@ export const Dashboard = () => {
             </div>
 
             {/**Tabela Provider e valores */}
+            <Container>
             <div className="p-col-12 p-md-6 task-list">
                 <div>
                     <div className="card">
@@ -341,6 +343,29 @@ export const Dashboard = () => {
                 </Panel>
                 
             </div>
+            </Container>
+{/*             
+            <div className="p-col-12 p-md-6 task-list">
+                <div>
+                    <div className="card">
+                        <DataTable
+                         value={sum}
+                         >
+                            <Column field="provider" header="Provider"></Column>
+                            <Column style={{textAlign: "right"}} field="valor_provider" header="Traded Values"></Column>
+                        </DataTable>
+                    </div>
+                </div>
+            </div>
+
+            {/**Grafico SMS */}
+            {/* <div className="p-col-12 p-md-6">
+                <Panel header={headerSms}>
+                    <Chart type="line" data={chartData} />
+                </Panel>
+                
+            </div> */}
+            
         </div>
         </div> 
         </div>   
@@ -348,3 +373,5 @@ export const Dashboard = () => {
     )
 
 }
+
+export default Dashboard;

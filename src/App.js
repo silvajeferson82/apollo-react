@@ -8,7 +8,7 @@ import AppFooter from './AppFooter';
 import Routes from './routes/routes';
 
 
-import { Dashboard } from './components/Dashboard';
+// import { Dashboard } from './components/Dashboard';
 import SignIn from './pages/SignIn'
 import PrimeReact from 'primereact/api';
 

@@ -29,14 +29,14 @@ export const Content = styled.div`
         }
 
         button {
-            background: #61b34e;
-            height: 56px;
-            border-radius: 10px;
+            /* background: #61b34e; */
+            height: 50px;
+            border-radius: 10px !important;
             border: 0;
-            padding: 0 16px;
-            color: #0b2544;
-            width: 100%;
-            font-weight: 550;
+            padding: 0 40px 0 40px !important;
+            color: #495057 !important;
+            width: 80%;
+            /* font-weight: 550; */
             margin-top: 16px;
             transition: background-color 0.2s;
             font-size: 16px;
@@ -44,6 +44,10 @@ export const Content = styled.div`
             &:hover {
                 background: ${shade(0.1, '#61b34e')};
             }
+        }
+
+        span {
+            font-weight: 600 !important;
         }
 
         a {
