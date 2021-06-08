@@ -16,8 +16,8 @@ const AppWrapper = (props) => {
 	switch (props.location.pathname) {
 		// case "/login":
 		// 	return <Route path="/login" component={Login} />
-		case "/error":
-			return <Route path="/error" component={Error} />
+		// case "/error":
+			// return <Route path="/error" component={Error} />
 		case "/notfound":
 			return <Route path="/notfound" component={NotFound} />
 		case "/access":

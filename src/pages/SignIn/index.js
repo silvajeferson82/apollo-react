@@ -9,46 +9,37 @@ import getValidationErrors from '../../utilities/getValidationErrors';
 import api from '../../service/api';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
     let history = useHistory();
     const formRef = useRef(null);
 
-        const handleSubmit = useCallback(async (data) => {
+    const handleSubmit = useCallback(async (element) => {
 
             try {
 
-                formRef.current?.setErrors({});
-
-                // const schema = Yup.object().shape({
-                //     email: Yup.string().required('E-mail obrigatório').email('Digite um e-mail válido'),
-                //     password: Yup.string().required('Senha obrigatória')
-                // });
-
-                // await schema.validate(data, {
-                //     abortEarly: false
-                // })
-                
-
-                await api.post('/usuarioLogin', { 
-                    usuario: data.profileObj.email
-                 }).then(resp => {
-                     const { data } = resp;
-                     localStorage.setItem('isAuthenticated', window.btoa(data));
-                     if (data) {
-                         history.push('/home');
-                     }
-                     if (resp) {
-                         const isAuthenticated = true;
-                         localStorage.setItem('isSign', isAuthenticated);
-                     }
-                 } )
-            }   catch (err) {
-                    // console.log('erroooow',err)
-                    const errors = getValidationErrors(err);
-                    formRef.current?.setErrors(errors);
-            }
-        }, []);
+            // formRef.current?.setErrors({});
+            
+            const { data }  = await api.post('/usuarioLogin', { 
+                usuario: element.profileObj.email
+                }); 
+                    // console.log('sadsada', data)
+                    localStorage.setItem('isAuthenticated', window.btoa(JSON.stringify(data)));
+                    localStorage.setItem('userData', window.btoa(JSON.stringify(element.profileObj)))
+                    if (data) {
+                        history.push('/home');
+                        // const isAuthenticated = true;
+                        // localStorage.setItem('isSign', isAuthenticated);
+                    }
+             
+        }   catch (err) {
+                console.log('erroooow',err)
+                // const errors = getValidationErrors(err);
+                // formRef.current?.setErrors(errors);
+                toast.error('you do not have permission to access the platform');
+        }
+    }, []);
 
     return (
         <Container>
@@ -61,11 +52,12 @@ const SignIn = () => {
                     {/* <Input name="email" icon={FiMail} placeholder="E-mail"/> */}
                     {/* <Input name="password" icon={FiLock} type="password" placeholder="Senha"/> */}
                     <GoogleLogin
-    clientId="906405271055-bc7ka1halimt9p2gg44m63qb8gi765nk.apps.googleusercontent.com"
-    buttonText="Sign in with Google"
-    onSuccess={handleSubmit}
-    onFailure={handleSubmit}
-    cookiePolicy={'single_host_origin'}
+                    clientId="906405271055-bc7ka1halimt9p2gg44m63qb8gi765nk.apps.googleusercontent.com"
+                    buttonText="Sign in with Google"
+                    onSuccess={handleSubmit}
+                    onFailure={handleSubmit}
+                    cookiePolicy={'single_host_origin'}
+                    
   />
                     {/* <button type="submit">Entrar</button> */}
                     {/* <a href="forgot">Esqueci minha senha</a> */}

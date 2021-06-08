@@ -1,9 +1,17 @@
-import React from 'react';
+import React , {useCallback} from 'react';
 import classNames from 'classnames';
-import { InputText } from 'primereact/inputtext';
-import { CSSTransition } from 'react-transition-group';
 
 const AppTopbar = (props) => {
+
+    
+    const SignOutBtn = useCallback (() => {
+        localStorage.removeItem('isAuthenticated')
+        localStorage.removeItem('userData')
+
+        if (localStorage.getItem('isAuthenticated') === null) {
+            window.location.reload();
+        }
+    }, []);
 
     const onTopbarItemClick = (event, item) => {
         if (props.onTopbarItemClick) {
@@ -13,6 +21,8 @@ const AppTopbar = (props) => {
             });
         }
     };
+
+    const userGoogle = JSON.parse(window.atob(localStorage.getItem('userData')));
 
     let topbarItemsClassName = classNames('topbar-menu fadeInDown', { 'topbar-menu-visible': props.topbarMenuActive });
 
@@ -30,8 +40,8 @@ const AppTopbar = (props) => {
             </button> */}
 
             <button type="button" className="p-link profile" onClick={props.onTopbarMenuButtonClick}>
-                <span className="username">Usuário</span>
-                <img src="assets/layout/images/avatar/will_avatar.png" alt="apollo-layout" />
+                <span className="username">{userGoogle.name.toUpperCase()}</span>
+                <img src={userGoogle.imageUrl} alt="profile-picture" style={{borderRadius: "50%"}} />
                 <i className="pi pi-angle-down"></i>
             </button>
 
@@ -44,7 +54,7 @@ const AppTopbar = (props) => {
             <ul className={topbarItemsClassName}>
                  <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
                     onClick={(e) => onTopbarItemClick(e, 'profile')}>
-                    <button type="button" className="p-link">
+                    <button type="button" className="p-link" onClick={SignOutBtn}>
                         <i className="topbar-icon pi pi-fw pi-power-off"></i>
                         <span className="topbar-item-name">Logout</span>
                     </button>
