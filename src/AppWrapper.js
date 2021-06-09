@@ -5,6 +5,9 @@ import { Login } from "./pages/Login";
 import { Error } from "./pages/Error";
 import { NotFound } from "./pages/NotFound";
 import { Access } from "./pages/Access";
+import PrivateRoute from './routes/PrivateRoute';
+import SignIn from './pages/SignIn';
+import Dashboard from './components/Dashboard';
 
 const AppWrapper = (props) => {
 	let location = useLocation();
@@ -14,18 +17,17 @@ const AppWrapper = (props) => {
 	}, [location]);
 
 	switch (props.location.pathname) {
+		case "/login":
+			return <Route path="/login" component={SignIn} />
 		// case "/login":
 		// 	return <Route path="/login" component={Login} />
 		// case "/error":
 			// return <Route path="/error" component={Error} />
-		case "/notfound":
-			return <Route path="/notfound" component={NotFound} />
-		case "/access":
-			return <Route path="/access" component={Access} />
 		default:
-			return <App />;
+			return <PrivateRoute  component={App} />;
 	}
 
 }
+
 
 export default withRouter(AppWrapper);

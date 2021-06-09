@@ -1,14 +1,17 @@
 import 'react-app-polyfill/ie11';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import AppWrapper from './AppWrapper';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-	<HashRouter>
-		<AppWrapper></AppWrapper>
-	</HashRouter>,
+	<BrowserRouter>
+		<AppWrapper />
+		<ToastContainer autoClose={3000}/>
+	</BrowserRouter>,
 	document.getElementById('root')
 );
 

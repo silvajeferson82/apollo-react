@@ -23,16 +23,21 @@ const SignIn = () => {
             
             const { data }  = await api.post('/usuarioLogin', { 
                 usuario: element.profileObj.email
-                }); 
-                    // console.log('sadsada', data)
-                    localStorage.setItem('isAuthenticated', window.btoa(JSON.stringify(data)));
-                    localStorage.setItem('userData', window.btoa(JSON.stringify(element.profileObj)))
-                    if (data) {
-                        history.push('/home');
-                        // const isAuthenticated = true;
-                        // localStorage.setItem('isSign', isAuthenticated);
-                    }
-             
+            }); 
+            
+            // console.log('sadsada', data)
+            localStorage.setItem('isAuthenticated', window.btoa(JSON.stringify(data)));
+            localStorage.setItem('userData', window.btoa(JSON.stringify(element.profileObj)))
+
+          
+            if (data) {
+                history.push('/home');
+                // const isAuthenticated = true;
+                // localStorage.setItem('isSign', isAuthenticated);
+               
+            }
+            
+            
         }   catch (err) {
                 console.log('erroooow',err)
                 // const errors = getValidationErrors(err);
@@ -48,7 +53,7 @@ const SignIn = () => {
 
                 <Form ref={formRef} onSubmit={handleSubmit}> 
                 
-                    <h1>Login</h1>
+                    {/* <h1>Login</h1> */}
                     {/* <Input name="email" icon={FiMail} placeholder="E-mail"/> */}
                     {/* <Input name="password" icon={FiLock} type="password" placeholder="Senha"/> */}
                     <GoogleLogin
