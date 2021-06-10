@@ -18,6 +18,7 @@ const Dashboard = () => {
     const [sms, setSms] = useState ({})
     const [email, setEmail] = useState ({})
     const [valorProviders, setValoresProviders] = useState([{}])
+    const [smsProviders, setSmsProviders] = useState([{}])
     const [smsData, setSmsData] = useState([{}])
     const [periodChart, setPeriodChart] = useState("7");
     const [coluna, setColuna] = useState([]);
@@ -121,12 +122,15 @@ const Dashboard = () => {
             await api.get('/totalSms').then(response => setSms(response.data))
             await api.get('/totalEmail').then(response => setEmail(response.data))
             await api.get('/valoresProviders').then(response => setValoresProviders(response.data))
+            await api.get('/smsProviders').then(response => setSmsProviders (response.data))
+            // allan()
             setLoading(false)
         } catch (error) {
             console.log(error)
         }
     }
 
+    // console.log('bb',smsProviders)
     const sum = valorProviders.map((user) => {
         const nomeValor = {
             provider: user.usuario_nome?.toUpperCase(),
@@ -136,6 +140,30 @@ const Dashboard = () => {
         }
         return nomeValor
     })
+    
+    console.log(smsProviders)
+
+    const descendingList = smsProviders.sort(function(a, b) {
+        if ( parseInt(a.qtd) < parseInt(b.qtd) ) {
+            return 1;
+          }
+        if ( parseInt(a.qtd) > parseInt(b.qtd) ) {
+        return -1;
+        }
+        // a must be equal to b
+        return 0;
+      }
+    );
+
+    const smsProvider = descendingList.map((user) => {
+        const nomeSms = {
+
+            providerSms: user.provider?.toUpperCase(),
+            providerQtdSms: new Intl.NumberFormat('pt-BR').format(user.qtd)
+        }
+        return nomeSms
+    })
+    // console.log('o bb gosto mais de voce', smsProvider)
     
     useEffect(() => {
         getGraph()
@@ -344,27 +372,31 @@ const Dashboard = () => {
                 
             </div>
             </Container>
-{/*             
+    
             <div className="p-col-12 p-md-6 task-list">
                 <div>
-                    <div className="card">
+                    <div className="card" style={{height: "520px"}}>
                         <DataTable
-                         value={sum}
+                         value={smsProvider}
                          >
-                            <Column field="provider" header="Provider"></Column>
-                            <Column style={{textAlign: "right"}} field="valor_provider" header="Traded Values"></Column>
+                            <Column 
+                            field="providerSms"  
+                            header="Provider"></Column>
+                            <Column style={{textAlign: "right"}} 
+                            field="providerQtdSms" 
+                            header="SMS Enviados"></Column>
                         </DataTable>
                     </div>
                 </div>
             </div>
 
-            {/**Grafico SMS */}
-            {/* <div className="p-col-12 p-md-6">
+            {/*Grafico SMS */}
+            <div className="p-col-12 p-md-6">
                 <Panel header={headerSms}>
                     <Chart type="line" data={chartData} />
                 </Panel>
                 
-            </div> */}
+            </div>
             
         </div>
         </div> 
