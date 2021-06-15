@@ -1,9 +1,110 @@
 @import './assets/flags/flags.css';
 
-// .chartjs-render-monitor {
-//     height: 330px !important;
-//     width: 700px !important;
+@media screen and (max-width: 534px) {
+    .topbar {
+        ul {
+            width: 32% !important;
+            height: 75%;
+            border-radius: 8px;
+        }
+
+    }
+
+    .sc-gtsrHT {
+        button {
+            width: 80% !important;
+        }
+    }
+
+    #card2 {
+        padding: 0;
+    }
+    
+    .p-panel .p-panel-content {
+        padding: 0;
+        
+    }
+
+    #graph2 {
+        canvas {
+            
+            height: 165px !important;
+        }
+    }
+}
+
+@media (min-width: 768px){
+    #card2 {
+        canvas {
+            height: 557px !important;
+        }
+    }
+
+    .p-panel-content {
+        canvas {
+            height: 248px !important
+        }
+    }
+}
+
+// @media (min-width: 786px){
+//     #card1 {
+//         canvas {
+//             height: 557px !important;
+//         }
+//     }
+
+//     .p-panel-content {
+//         canvas {
+//             height: 249px !important
+//         }
+//     }
 // }
+
+@media (min-width: 1024px) {
+//  and (max-width: 1023px) {
+    #card2 {
+        canvas {
+            height: 484px !important;
+        }
+    }
+
+    .p-panel-content {
+        canvas {
+            height: 248px !important
+        }
+    }
+}
+
+@media (min-width: 1280px) {
+    //  and (max-width: 1023px) {
+    #card2 {
+        canvas {
+            height: 408px !important;
+        }
+    }
+
+    .p-panel-content {
+        canvas {
+            height: 248px !important
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    //  and (max-width: 1023px) {
+    #card2 {
+        canvas {
+            height: 374px !important;
+        }
+    }
+
+    // .p-panel-content {
+    //     canvas {
+    //         height: 248px !important
+    //     }
+    // }
+}
 
 .datatable-scroll-demo .loading-text {
     display: block;

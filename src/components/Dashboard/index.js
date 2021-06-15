@@ -5,7 +5,7 @@ import { Chart } from 'primereact/chart'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column'
 import { ProgressSpinner } from 'primereact/progressspinner';
-import { Container } from './styles';
+// import { Container } from './styles';
 import { Dialog } from 'primereact/dialog';
 import { format, parseISO } from 'date-fns';
 import AppTopbar from '../../AppTopbar';
@@ -140,8 +140,6 @@ const Dashboard = () => {
         }
         return nomeValor
     })
-    
-    console.log(smsProviders)
 
     const descendingList = smsProviders.sort(function(a, b) {
         if ( parseInt(a.qtd) < parseInt(b.qtd) ) {
@@ -202,14 +200,17 @@ const Dashboard = () => {
                 const name = [
                     user.qtd
                 ]
+    
                 return name
             } else {
                 return ''
             }
         });
 
-            setColuna(date.reverse());
-            setLinhaSms(qtd.reverse());
+        const arrayQtd = qtd.reduce ((list, sub) => list.concat(sub), [])
+
+        setColuna(date.reverse());
+        setLinhaSms(arrayQtd.reverse());
     }
 
     const chartData = {
@@ -237,6 +238,57 @@ const Dashboard = () => {
             </div>
         )
     }
+
+    const basicData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [
+            {
+                label: 'My First dataset',
+                backgroundColor: '#42A5F5',
+                data: [65, 59, 80, 81, 56, 55, 40]
+            }
+        ]
+    };
+
+    const getLightTheme = () => {
+
+        let horizontalOptions = {
+            indexAxis: 'y',
+            maintainAspectRatio: false,
+            aspectRatio: .8,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#495057'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#495057'
+                    },
+                    grid: {
+                        color: '#ebedef'
+                    }
+                }
+            }
+        };
+
+        return {
+            horizontalOptions
+        }
+    }
+
+    const { horizontalOptions} = getLightTheme();
 
     return (
 
@@ -350,10 +402,10 @@ const Dashboard = () => {
             </div>
 
             {/**Tabela Provider e valores */}
-            <Container>
-            <div className="p-col-12 p-md-6 task-list">
+            
+            <div className="p-col-12 p-md-6">
                 <div>
-                    <div className="card">
+                    <div id="card1" className="card">
                         <DataTable
                          value={sum}
                          >
@@ -364,18 +416,20 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/**Grafico SMS */}
+            {/**Grafico BARCHAR */}
             <div className="p-col-12 p-md-6">
-                <Panel header={headerSms}>
-                    <Chart type="line" data={chartData} />
-                </Panel>
+
+                <div id="card2" className="card">
+                    <Chart type="bar" data={basicData} options={horizontalOptions} />
+                </div>
+
                 
             </div>
-            </Container>
+            
     
             <div className="p-col-12 p-md-6 task-list">
                 <div>
-                    <div className="card" style={{height: "520px"}}>
+                    <div id="card3"className="card">
                         <DataTable
                          value={smsProvider}
                          >
@@ -391,7 +445,7 @@ const Dashboard = () => {
             </div>
 
             {/*Grafico SMS */}
-            <div className="p-col-12 p-md-6">
+            <div id="graph2" className="p-col-12 p-md-6">
                 <Panel header={headerSms}>
                     <Chart type="line" data={chartData} />
                 </Panel>

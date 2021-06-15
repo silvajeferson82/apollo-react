@@ -25,7 +25,7 @@ const SignIn = () => {
                 usuario: element.profileObj.email
             }); 
             
-            // console.log('sadsada', data)
+            console.log('sadsada', data)
             localStorage.setItem('isAuthenticated', window.btoa(JSON.stringify(data)));
             localStorage.setItem('userData', window.btoa(JSON.stringify(element.profileObj)))
 
