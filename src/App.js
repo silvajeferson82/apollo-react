@@ -24,7 +24,7 @@ import './App.scss';
 
 const App = () => {
 
-    
+
 
     const [layoutMode, setLayoutMode] = useState('static');
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
@@ -355,7 +355,7 @@ const App = () => {
 
     return (
         <div className={layoutClassName}>
-             {/* onClick={onDocumentClick}> */}
+            {/* onClick={onDocumentClick}> */}
 
             {/* <AppTopbar
                 topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem}
@@ -363,7 +363,7 @@ const App = () => {
                 onTopbarMenuButtonClick={onTopbarMenuButtonClick}
                 onTopbarItemClick={onTopbarItemClick} /> */}
 
-    
+
 
             <div className="layout-content">
                 {/* <AppBreadcrumb /> */}
@@ -376,8 +376,8 @@ const App = () => {
                         </Switch>
                 </Router> */}
                 {/* </div> */}
-                <Routes/>
-                <AppFooter />
+                <Routes />
+                {/* <AppFooter /> */}
                 <ToastContainer />
 
                 {staticMenuMobileActive && <div className="layout-mask"></div>}

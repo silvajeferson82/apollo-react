@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = (props)  => {
+const RouteDefault = (props)  => {
     
     let isLogged = false
 
@@ -13,7 +13,7 @@ const PrivateRoute = (props)  => {
         } 
     }
     
-    return isLogged ? <Route {...props}/> : <Redirect to="/"/>
+    return isLogged ? <Redirect to="/home" /> : <Route {...props}/>
 }
 
-export default PrivateRoute;
+export default RouteDefault;

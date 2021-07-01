@@ -17,6 +17,14 @@ export const Content = styled.div`
     max-width: 700px;
     background-color: #0b2544;
 
+    @media (min-width: 720px) and (max-width: 1279px){
+        max-width: 100% ;
+    }
+
+    @media (min-width: 1280px){
+        max-width: 50% ;
+    }
+
     form {
         margin: 45px 0;
         width: 340px;

@@ -30,9 +30,9 @@ const AppTopbar = (props) => {
         <div className="topbar clearfix">
 
             <div className="logo-link" style={{marginLeft:"0.625rem"}}>
-                <a href="https://direto.tech/" target="_blank">
+                {/* <a href="https://direto.tech/" target="_blank"> */}
                 <img className="logo" alt="direto-layout" src="assets/layout/images/logo_branca_direto.png" />
-                </a>
+                {/* </a> */}
             </div>
 
             {/* <button type="button" className="p-link menu-button" id="menu-button" onClick={props.onMenuButtonClick}>
@@ -53,7 +53,8 @@ const AppTopbar = (props) => {
 
             <ul className={topbarItemsClassName}>
                  <li className={classNames({ 'menuitem-active': props.activeTopbarItem === 'profile' })}
-                    onClick={(e) => onTopbarItemClick(e, 'profile')}>
+                    onClick={(e) => onTopbarItemClick(e, 'profile')}
+                    >
                     <button type="button" className="p-link" onClick={SignOutBtn}>
                         <i className="topbar-icon pi pi-fw pi-power-off"></i>
                         <span className="topbar-item-name">Logout</span>

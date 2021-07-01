@@ -1,48 +1,31 @@
 import React, { useRef, useCallback } from 'react';
 import { Container, Content, Background } from './styles';
 import logoImg from '../../assets/logodireto.png';
-import Input from '../../components/input';
-import { FiMail, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
-import * as Yup from 'yup';
-import getValidationErrors from '../../utilities/getValidationErrors';
 import api from '../../service/api';
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { toast } from 'react-toastify';
 
 const SignIn = () => {
-    let history = useHistory();
+    const history = useHistory();
     const formRef = useRef(null);
 
     const handleSubmit = useCallback(async (element) => {
-
-            try {
-
-            // formRef.current?.setErrors({});
-            
-            const { data }  = await api.post('/usuarioLogin', { 
-                usuario: element.profileObj.email
+        try {
+            const { data } = await api.post('/usuarioLogin', { 
+                    usuario: element.profileObj.email
             }); 
             
-            console.log('sadsada', data)
             localStorage.setItem('isAuthenticated', window.btoa(JSON.stringify(data)));
             localStorage.setItem('userData', window.btoa(JSON.stringify(element.profileObj)))
-
-          
+            
             if (data) {
-                history.push('/home');
-                // const isAuthenticated = true;
-                // localStorage.setItem('isSign', isAuthenticated);
-               
-            }
-            
-            
-        }   catch (err) {
-                console.log('erroooow',err)
-                // const errors = getValidationErrors(err);
-                // formRef.current?.setErrors(errors);
-                toast.error('you do not have permission to access the platform');
+                history.push('/home');               
+            } 
+        } catch (error) {
+            console.log(error);
+            toast.error('you do not have permission to access the platform');
         }
     }, []);
 
